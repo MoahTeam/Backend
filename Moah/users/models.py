@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, UserManager as DjangoUserManager
+from django.contrib.auth.models import AbstractUser, BaseUserManager as DjangoUserManager
 
 
 class UserManager(DjangoUserManager):
@@ -12,7 +12,7 @@ class UserManager(DjangoUserManager):
         user.save(using=self._db)
         return user
     
-    def create_user(self, username, email=None, password =None, **extra_fields):
+    def create_user(self, email, username=None, password =None, **extra_fields):
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_superuser', False)
         return self._create_user(username, email, password, **extra_fields)
@@ -23,5 +23,9 @@ class UserManager(DjangoUserManager):
         return self._create_user(username, email, password, **extra_fields)
 
 class User(AbstractUser):
+    username = models.CharField(max_length=30)
+    email = models.EmailField(verbose_name = "email", max_length = 255, unique = True)
     objects = UserManager()
+    USERNAME_FIELD='email'
+    REQUIRED_FIELDS=[]
 # Create your models here.

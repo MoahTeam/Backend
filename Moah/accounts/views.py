@@ -8,11 +8,13 @@ from django.shortcuts import render, redirect
 
 def signup_view(request):
     if request.method == 'POST':
+        username = "hey"
         email = request.POST.get('email')
         password = request.POST.get('password')
         passwordCk = request.POST.get('passwordCk')
         if password == passwordCk:
             user = User.objects.create_user(
+                username = username,
                 email=email,
                 password=password
             )
@@ -25,14 +27,21 @@ def signup_view(request):
         
 def login_view(request):
     if request.method == 'GET':
-        return render(request, 'accounts/login.html', {'form': AuthenticationForm()})
+        return render(request, 'Account/login.html', {'form': AuthenticationForm()})
     else:
-        form = AuthenticationForm(request, data = request.POST)
-        if form.is_valid():
-            login(request, form.user_cache)
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        
+        user = User.objects.get(email=email)
+        if user is None:
+            pass
+
+        if user.check_password(password):
+            auth.login(request, user)
             return redirect('index')
         else:
-            return render(request, 'accounts/login.html', {'form':form})
+            print("dfsdf")
+            return render(request, 'Account/login.html')
         
 def logout_view(request):
     if request.user.is_authenticated:

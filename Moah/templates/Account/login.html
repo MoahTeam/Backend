@@ -19,18 +19,20 @@
         <div id=sub-title style="margin-bottom: 6.94rem;">오늘의 <strong>할일</strong>을 <strong>내일의 기록</strong>으로</div>
     </section>
     <section>
-        <form class="form_wrap_line">
+        <form class="form_wrap_line" method="POST">
+            {% csrf_token %}
             <div style="margin-bottom: 1.5rem;">
-                <input type="text" class="input-form" id="id" placeholder="  이메일을 입력해주세요">
+                <input type="text" class="input-form" name="email" id="id" placeholder="  이메일을 입력해주세요">
             </div>
             <div style="margin-bottom: 2rem;">
                 <label for="passwordField" class="password-label">
-                    <input type="password" id="passwordField" class="input-form" placeholder="  비밀번호를 입력해주세요">
+                    <input type="password" name="password" id="passwordField" class="input-form"
+                        placeholder="  비밀번호를 입력해주세요">
                     <img src="/image/pwd-toggle-show.svg" class="toggle-image1" onclick="togglePasswordVisibility()">
                 </label>
             </div>
             <div>
-                <button type="button" id=login_submitbtn onclick="handleLogin()" disabled>로그인</button>
+                <button type="submit" id=login_submitbtn onclick="handleLogin()">로그인</button>
             </div>
         </form>
         <div id="move-href" style="text-align: center; margin-top: 2rem;">

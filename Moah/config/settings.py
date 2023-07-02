@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'posts',
     'accounts',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -123,6 +124,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
+AUTH_USER_MODEL = 'users.User'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 # Default primary key field type
