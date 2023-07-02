@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>find-page1</title>
+    <link rel="stylesheet" type="text/css" href="find.css">
+</head>
+
+<body class="container">
+    <section>
+        <div class=main-logo id=main-logo-bg style="border-radius: 3.125rem;">
+            <img src="/image/main-logo-.svg">
+        </div>
+    </section>
+    <section style="text-align: center;">
+        <div id=main-title style="margin-bottom: 0.87rem;">MOAH</div>
+        <div id=sub-title style="margin-bottom: 6.94rem;">오늘의 <strong>할일</strong>을 <strong>내일의 기록</strong>으로</div>
+    </section>
+    <section>
+        <form class="form_wrap_line">
+            <div style="margin-bottom: 1.5rem;">
+                <input type="text" class="input-form" id="id" placeholder="  이메일을 입력해주세요">
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <label for="passwordField" class="password-label">
+                    <input type="password" id="passwordField" class="input-form" placeholder="  비밀번호를 입력해주세요">
+                    <img src="/image/pwd-toggle-show.svg" class="toggle-image1" onclick="togglePasswordVisibility()">
+                </label>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <label for="passwordCkField" class="password-label">
+                    <input type="password" id="passwordCkField" class="input-form" placeholder="  비밀번호를 다시 입력해주세요">
+                    <img src="/image/pwd-toggle-show.svg" class="toggle-image2" onclick="togglePasswordCheckVisibility()">
+                </label>
+            </div>
+            <div>
+                <button type="button" id=login_submitbtn onclick="" disabled>비밀번호 변경</button>
+            </div>
+        </form>
+        <div id="move-href" style="text-align: center; margin-top: 2rem;">
+            <span><a href="#">회원가입</a></span>
+            <span class="line" style="width: 0.0625rem;
+            height: 1.5rem; color: #CECECE;">|</span>
+            <span><a href="/Account/login/login.html">로그인</a></span>
+        </div>
+    </section>
+
+    <script src="/Account/account.js"></script>
+</body>
+
+</html>
