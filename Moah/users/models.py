@@ -27,5 +27,5 @@ class User(AbstractUser):
     email = models.EmailField(verbose_name = "email", max_length = 255, unique = True)
     objects = UserManager()
     USERNAME_FIELD='email'
-    REQUIRED_FIELDS=[]
+    REQUIRED_FIELDS=['username']
 # Create your models here.

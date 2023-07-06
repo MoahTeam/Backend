@@ -63,52 +63,47 @@
 
     <section class="Date-list">
         <div class="Date-list-num">
-            <div class="Date-list-circle" id="jan"><a href="/Diary/date/January.html">Jan</a></div>
-            <div class="Date-list-circle" id="feb"><a href="/Diary/date/February.html">Feb</a></div>
-            <div class="Date-list-circle" id="mar"><a href="/Diary/date/March.html">Mar</a></div>
-            <div class="Date-list-circle" id="apr" style="background: var(--1, linear-gradient(180deg, #FF9F9F 0%, #FFBFBF 100%));
-            box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.15) inset;"><a href="/Diary/date/April.html">Apr</a></div>
-            <div class="Date-list-circle" id="may"><a href="/Diary/date/May.html">May</a></div>
-            <div class="Date-list-circle" id="jun"><a href="/Diary/date/June.html">Jun</a></div>
-            <div class="Date-list-circle" id="jul"><a href="/Diary/date/July.html">Jul</a></div>
-            <div class="Date-list-circle" id="aug"><a href="/Diary/date/August.html">Aug</a></div>
-            <div class="Date-list-circle" id="sep"><a href="/Diary/date/September.html">Sep</a></div>
-            <div class="Date-list-circle" id="oct"><a href="/Diary/date/October.html">Oct</a></div>
-            <div class="Date-list-circle" id="nov"><a href="/Diary/date/November.html">Nov</a></div>
-            <div class="Date-list-circle" id="dec"><a href="/Diary/date/December.html">Dec</a></div>
+            <div class="Date-list-circle" id="jan">Jan</div>
+            <div class="Date-list-circle" id="feb">Feb</div>
+            <div class="Date-list-circle" id="mar">Mar</div>
+            <div class="Date-list-circle" id="apr">Apr</div>
+            <div class="Date-list-circle" id="may">May</div>
+            <div class="Date-list-circle" id="jun">Jun</div>
+            <div class="Date-list-circle" id="jul">Jul</div>
+            <div class="Date-list-circle" id="aug">Aug</div>
+            <div class="Date-list-circle" id="sep">Sep</div>
+            <div class="Date-list-circle" id="oct">Oct</div>
+            <div class="Date-list-circle" id="nov">Nov</div>
+            <div class="Date-list-circle" id="dec">Dec</div>
         </div>
     </section>
 
-    <!-- 그리드 내용 -->
-    <div class="grid-container">
-        {% for page in page_obj %}
-        <div class="grid-item">
-            <p class="date-time">{{page.created_at|date:"Y.m/d"}}</p>
-            <p class="Writing">{{page.title}}</p>
-            <p class="emote">{{page.feeling}}</p>
+    <form>
+        <div class="button-container">
+            <button class="custom-button"><img src="/image/Diary-addPhoto-btn.svg"><p>사진추가</ㅔ></button>
+            <button class="custom-button" id="savedBtn"><img src="/image/Diary-saveBtn.svg"><p>저장하기</p></button>
+          </div>    
+        <div class="text-content-Wrap">
+          <div id="textArea-wrap">
+            <div id="title-wrap">
+              <input type="text" id="title" placeholder="제목을 입력하세요" name="text-title">
+              <hr>
+            </div>
+            <div class="visibility-option">
+              <input type="radio" id="public" name="visibility" value="public" checked onclick="toggleVisibility('public')">
+              <label for="public">공개</label>
+              <div class="vertical-line"></div>
+              <input type="radio" id="private" name="visibility" value="private" onclick="toggleVisibility('private')">
+              <label for="private">비공개</label>
+            </div>
+            <div>
+              <!-- <div contenteditable="true">이미지</div> -->
+              <textarea id="content" rows="1" placeholder="내용을 입력하세요" onchange="handleResizeHeight()"></textarea>
+            </div>
+          </div>
         </div>
-        <!-- 새글 작성 버튼 -->
-        {% if forloop.counter|divisibleby:3 %}
-    </div>
-    {% endif %}
-    {% if forloop.last %}
-    <div class="grid-item" onclick="nextWriting()">
-        <p class="date-time">2023/01/01</p>
-        <div style="text-align: center; margin-top: 4.31rem;">
-            <img src="/image/writing-plus-button.svg">
-            <p id="next-writing">글쓰기</p>
-        </div>
-    </div>
-    {% endif %}
-    {% endfor %}
-    <div class="btn-wrap">
-        {% if page_obj.has_previous %}
-        <a href="?page={{page_obj.previous_page_number}}" id="back-btn"><img src="/image/Diary-backBtn.svg"></a>
-        {% endif %}
-        {% if page_obj.has_next %}
-        <a href="?page={{page_obj.next_page_number}}" id="next-btn"><img src="/image/Diary-nextBtn.svg"></a>
-        {% endif %}
-    </div>
+      </form>
+      
 
     <script src="/Diary/Diary.js"></script>
     <script src="/main/main.js"></script>
