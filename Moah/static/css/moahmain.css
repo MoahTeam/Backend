@@ -1,0 +1,467 @@
+/*font 확인 필요*/
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+/* main-Frame*/
+
+body {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    width: 120rem;
+    height: auto;
+}
+
+header {
+    height: 4.12rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    
+}
+
+.nav-list{
+    display: flex;
+    font-size: 1.875rem;
+    margin-top: 4.12rem;
+    
+}
+
+.nav-list span a{
+    text-decoration: none;
+    color: var(--4, #848484);
+    font-family: 'Pretendard-Regular';
+    font-weight: 500;
+}
+
+.nav-list span a:hover{
+    color: var(--3, #434343);
+}
+
+.hamburger-menu {
+    width: 3rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    cursor: pointer;
+    margin-right: 20.04rem;
+    margin-top: 3.69rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu {
+    display: none;
+    flex-shrink: 0;
+    position: absolute;
+    top: calc(60px + 10px);
+    border-radius: 0.625rem;
+    background: rgba(241, 241, 241, 0.85);
+    box-shadow: -4px 4px 8px 0px rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(2px);
+    margin-right: 20.04rem;
+    width: 21.375rem;
+    z-index: 2;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu ul li {
+    text-align: left;
+    margin-top: 0.87rem;
+    padding: 9px;
+    margin-bottom: 0.87rem;
+}
+
+.menu ul li a {
+    color: var(--4, #848484);
+    text-decoration: none;
+    font-size: 1.5625rem;
+    font-weight: 300;
+    font-family: 'Pretendard-Regular';
+    margin-left: 10px;
+}
+
+.menu ul li:hover {
+    background: rgba(255, 191, 191, 0.50);
+}
+
+.menu.show {
+    display: block;
+}
+
+/*main-Fram*/
+
+/* 프로필 */
+
+.profile {
+    width: 1180px;
+    height: 546px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #F1F1F1;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.15);
+    margin: 0 auto;
+    margin-top: 70px;
+    position: relative;
+    display: flex;
+}
+
+.date {
+    position: absolute;
+    top: 24px;
+    left: 24px;   
+    width: 129px;
+    height: 30px;
+    color: #CECECE;
+    font-size: 25px;
+    font-family: Pretendard;
+    font-weight: 300;
+}
+
+.profileImg {
+    position: absolute;
+    top: 87.29px;
+    left: 104.29px;
+    width: 371.415px;
+    height: 363.512px;
+    flex-shrink: 0;
+    background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+    border-radius: 324px;
+    background: #BBB;
+}
+
+.profileName {
+    position: absolute;
+    top: 149px;
+    left: 623px;
+    width: 65px;
+    height: 30px;
+    color: #434343;
+    font-size: 25px;
+    font-family: Pretendard;
+    font-weight: 300;
+}
+
+.container {
+    position: relative;
+    top: 273px;
+    left: 628px;
+    display: flex;
+}
+.container .box {
+    width: 128px;
+    height: 154px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #FFF;
+    margin-right: 16px;
+    justify-content: center;
+    align-items: center ;
+    display: flex;
+    flex-direction: column;
+}
+.container .box img {
+    position: absolute;
+    top: 52px;
+    width: 18px;
+    height: 18px;
+}
+.container .box .number {
+    position: absolute;
+    top: 72px;
+    color: #848484;
+    font-size: 25px;
+    font-family: Pretendard;
+    font-weight: 300;
+    margin-top: 0px;
+}
+
+.todayMenu {
+    color: #848484;
+    font-size: 20px;
+    font-family: Pretendard;
+    font-weight: 300;
+}
+
+.menuDone {
+    position: absolute;
+    top: 233px;
+    left: 628px;
+}
+.menuEvent {
+    position: absolute;
+    top: 233px;
+    left: 772px;
+}
+.menuToday {
+    position: absolute;
+    top: 233px;
+    left: 916px;
+}
+
+.visitor {
+    width: 15.125rem;
+    height: 3.4375rem;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: var(--5, #CECECE);
+    position: absolute;
+    top: 28.69rem;
+    left: 10.56rem;
+}
+
+.visitorManage {
+    width: 8.625rem;
+    height: 2.25rem;
+    color: #FFF;
+    font-size: 1.875rem;
+    font-family: Pretendard;
+    margin-top: 0.62rem;
+    margin-left: 3.25rem;
+}
+
+/* 일정 체크 */
+.littleMenu {
+    display: flex;
+    margin-left: 23.13rem;
+    margin-top: 2.25rem;
+}
+.littleMenu button {
+    color: #848484;
+    font-size: 1.5625rem;
+    font-family: Pretendard;
+    margin-right: 1.5rem;
+    background-color: transparent;
+    border: none;
+}
+.littleMenu button:hover {
+    color: #434343;
+    cursor: pointer;
+}
+.littleMenu .All a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.AllBox {
+    width: 24.25rem;
+    height: 24.25rem;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #F1F1F1;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.15);
+}
+.taskList {
+    list-style-type: none;
+    color: #434343;
+    font-size: 1.5625rem;
+    font-family: Pretendard;
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.taskList li {
+    cursor: pointer;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 3.5rem;
+    margin-left: 3rem;
+}
+.taskList li input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 1.6875rem;
+    height: 1.6875rem;
+    flex-shrink: 0;
+    border-radius: 5px;
+    background: #CECECE;
+    margin-right: 2.5rem;
+}
+.taskList li input[type="checkbox"]:checked {
+    border-radius: 5px;
+    background: linear-gradient(180deg, #FF9F9F 0%, #FFBFBF 100%);
+}
+.taskList li span {
+    text-decoration: none;
+}
+.taskList li.checked span {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.ImgBox {
+    width: 24.25rem;
+    height: 24.25rem;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.15);
+    justify-content: center;       /* 사진 규격 오류 */
+    align-items: center;
+}
+
+
+.ToDoBox {
+    width: 24.25rem;
+    height: 24.25rem;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #F1F1F1;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+.ToDoBox .date {
+    position: absolute;
+    top: 0.75rem;
+    left: 1rem;
+    color: #848484;
+    font-size: 1.25rem;
+    font-family: Pretendard;
+    font-weight: 300;
+}
+.ToDoBox .daySchedule {
+    color: #434343;
+    font-size: 1.5625rem;
+    font-family: Pretendard;
+    font-weight: 300;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.littleMenuBox {
+    display: flex;
+    margin-left: 23.13rem;
+    margin-top: 1.13rem;
+}
+.littleMenuBox > * + * {
+    margin-left: 1rem;
+}
+
+/* 메인페이지에서 간이 To do */
+/* .TodoBox {
+    display: flex;
+    margin-left: 23.13rem;
+    margin-top: 1.13rem;
+    width: 73.75rem;
+    height: 24.9375rem;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #F1F1F1;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.15);
+}
+.TodoBox .toDoTaskList {
+    height: auto;
+}
+.TodoBox .toDoTaskList .taskList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: 8rem;
+}
+#Todocheckbox {
+    margin-left: 9.81rem;
+} */
+
+/* 친구 목록 겸 추가 */
+.addFriend {
+    margin-top: 2.31rem;
+    margin-left: 23.12rem;
+    display: flex;
+    align-items: center;
+}
+.addFriend .user {
+    color: #434343;
+    font-size: 1.5625rem;
+    font-family: Pretendard;
+}
+.addFriend .addFriendButton {
+    margin-left: 0.75rem;
+    width: 2.1875rem;
+    height: 2.1875rem;
+    flex-shrink: 0;
+    background-color: transparent;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+}
+.addFriendButton img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+}
+
+
+.friends {
+    width: 120rem;
+    height: 12.31rem;
+    position: relative;
+}
+
+.friends hr {
+    width: 73.75rem;
+    height: 0.2rem;
+    flex-shrink: 0;
+    border: none;
+    color: #CECECE;
+    background-color: #CECECE;
+}
+
+.friends .leftButton {
+    position: absolute;
+    left: 23.12rem;
+    top: 4.38rem;
+    margin-bottom: 4.38rem;
+    width: 3.5625rem;
+    height: 2.9375rem;
+    flex-shrink: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.friends .rightButton {
+    position: absolute;
+    right: 23.12rem;
+    top: 4.38rem;
+    margin-bottom: 4.38rem;
+    width: 3.5625rem;
+    height: 2.9375rem;
+    flex-shrink: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.friends .bottomLine {
+    position: absolute;
+    top: 100%;                  /* 높이 조절 오류*/
+    left: 23.12rem;
+}
+.anotherUser {
+    width: 120rem;
+    height: 12.31rem;
+    flex-shrink: 0;
+    position: absolute;
+    top: 0;
+    margin-left: 28.13rem;
+    display: flex;
+    align-items: center;
+}
+.anotherUser img {
+    margin-right: 1.5rem;
+}

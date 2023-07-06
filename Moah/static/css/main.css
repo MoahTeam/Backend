@@ -1,0 +1,101 @@
+/*font 확인 필요*/
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+/* main-Frame*/
+
+body {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    width: 120rem;
+    height: auto;
+}
+
+header {
+    height: 4.12rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.nav-list{
+    display: flex;
+    font-size: 1.875rem;
+    margin-top: 4.12rem;
+}
+
+.nav-list span a{
+    text-decoration: none;
+    color: var(--4, #848484);
+    font-family: 'Pretendard-Regular';
+    font-weight: 500;
+}
+
+.nav-list span a:hover{
+    color: var(--3, #434343);
+}
+
+.hamburger-menu {
+    width: 3rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    cursor: pointer;
+    margin-right: 20.04rem;
+    margin-top: 3.69rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu {
+    display: none;
+    flex-shrink: 0;
+    position: absolute;
+    top: calc(60px + 10px);
+    border-radius: 0.625rem;
+    background: rgba(241, 241, 241, 0.85);
+    box-shadow: -4px 4px 8px 0px rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(2px);
+    margin-right: 20.04rem;
+    width: 21.375rem;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu ul li {
+    text-align: left;
+    margin-top: 0.87rem;
+    padding: 9px;
+    margin-bottom: 0.87rem;
+}
+
+.menu ul li a {
+    color: var(--4, #848484);
+    text-decoration: none;
+    font-size: 1.5625rem;
+    font-weight: 300;
+    font-family: 'Pretendard-Regular';
+    margin-left: 10px;
+}
+
+.menu ul li:hover {
+    background: rgba(255, 191, 191, 0.50);
+}
+
+.menu.show {
+    display: block;
+}
+
+/*main-Fram*/
