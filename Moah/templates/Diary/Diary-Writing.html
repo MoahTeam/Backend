@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Diary</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/main/main.css">
+    <link rel="stylesheet" type="text/css" href="/Diary/Diary.css">
+</head>
+
+<body>
+    <!-- 메인 프레임 -->
+    <header>
+        <!-- nav list 링크 수정 하면서 작업 + 페이지 마다 폰트 color 다르게 수정 확인 필요 -->
+        <div class="nav-list">
+            <span style="margin-right: 3.37rem; margin-left: 28.69rem;"><a href="#">Main</a></span>
+            <img src="/image/nav-line.svg" style="margin-right: 3.37rem;">
+            <span style="margin-right: 3.37rem"><a href="#">To do</a></span>
+            <img src="/image/nav-line.svg" style="margin-right: 3.37rem">
+            <span style="margin-right: 3.37rem"><a href="#">Diary</a></span>
+            <img src="/image/nav-line.svg" style="margin-right: 3.37rem">
+            <span style="margin-right: 3.37rem"><a href="#">Event</a></span>
+            <img src="/image/nav-line.svg" style="margin-right: 3.37rem">
+            <span style="margin-right: 6.57rem;"><a href="#">Gallery</a></span>
+        </div>
+        <!-- 알람 버튼 -->
+        <div>
+            <img src="/image/alert.svg" style="margin-right: 3rem; margin-top: 4.2rem;">
+        </div>
+        <!-- 햄버거 메뉴 버튼 -->
+        <div class="hamburger-menu">
+            <img src="/image/hambuger.svg">
+        </div>
+        <nav class="menu">
+            <ul class="hamburger-list">
+                <li><a href="#">방명록 관리</a></li>
+                <div style="  width: 100%;
+                height: 0.09375rem;
+                background-color: #CECECE;
+              "></div>
+                <li><a href="#">친구 목록</a></li>
+                <div style="  width: 100%;
+                height: 0.09375rem;
+                background-color: #CECECE;
+              "></div>
+                <li><a href="#">친구 신청</a></li>
+                <div style="  width: 100%;
+                height: 0.09375rem;
+                background-color: #CECECE;
+              "></div>
+                <li><a href="#">로그아웃</a></li>
+                <div style="  width: 100%;
+                height: 0.09375rem;
+                background-color: #CECECE;
+              "></div>
+                <li><a href="#">탈퇴</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 메인 프레임 끝 -->
+
+    <section class="Date-list">
+        <div class="Date-list-num">
+            <div class="Date-list-circle" id="jan">Jan</div>
+            <div class="Date-list-circle" id="feb">Feb</div>
+            <div class="Date-list-circle" id="mar">Mar</div>
+            <div class="Date-list-circle" id="apr">Apr</div>
+            <div class="Date-list-circle" id="may">May</div>
+            <div class="Date-list-circle" id="jun">Jun</div>
+            <div class="Date-list-circle" id="jul">Jul</div>
+            <div class="Date-list-circle" id="aug">Aug</div>
+            <div class="Date-list-circle" id="sep">Sep</div>
+            <div class="Date-list-circle" id="oct">Oct</div>
+            <div class="Date-list-circle" id="nov">Nov</div>
+            <div class="Date-list-circle" id="dec">Dec</div>
+        </div>
+    </section>
+
+    <form>
+        <div class="button-container">
+            <button class="custom-button"><img src="/image/Diary-addPhoto-btn.svg"><p>사진추가</ㅔ></button>
+            <button class="custom-button" id="savedBtn"><img src="/image/Diary-saveBtn.svg"><p>저장하기</p></button>
+          </div>    
+        <div class="text-content-Wrap">
+          <div id="textArea-wrap">
+            <div id="title-wrap">
+              <input type="text" id="title" placeholder="제목을 입력하세요" name="text-title">
+              <hr>
+            </div>
+            <div class="visibility-option">
+              <input type="radio" id="public" name="visibility" value="public" checked onclick="toggleVisibility('public')">
+              <label for="public">공개</label>
+              <div class="vertical-line"></div>
+              <input type="radio" id="private" name="visibility" value="private" onclick="toggleVisibility('private')">
+              <label for="private">비공개</label>
+            </div>
+            <div>
+              <!-- <div contenteditable="true">이미지</div> -->
+              <textarea id="content" rows="1" placeholder="내용을 입력하세요" onchange="handleResizeHeight()"></textarea>
+            </div>
+          </div>
+        </div>
+      </form>
+      
+
+    <script src="/Diary/Diary.js"></script>
+    <script src="/main/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+.Date-list-num{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5.75rem;
+    margin-left: 23rem;
+    margin-right: 23rem;
+    color: var(--4, #848484);
+    font-size: 1.5625rem;
+    font-family: 'Pretendard-regular';
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.Date-list-circle{
+    border-radius: 4.375rem;
+    width: 4.375rem;
+    height: 4.375rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    /* 월마다 변경될 css */
+    background: var(--1, linear-gradient(180deg, #FF9F9F 0%, #FFBFBF 100%));
+}
