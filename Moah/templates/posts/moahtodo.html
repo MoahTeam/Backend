@@ -1,63 +1,6 @@
+{% extends 'main.html'  %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>모아 투두페이지</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/moahtodo.css' %}">
-</head>
-
-<body>
-    <!-- 메인 프레임 -->
-    <header>
-        <!-- nav list 링크 수정 하면서 작업 + 페이지 마다 폰트 color 다르게 수정 확인 필요 -->
-        <div class="nav-list">
-            <span style="margin-right: 3.37rem; margin-left: 28.69rem;"><a href="#">Main</a></span>
-            <img src="{% static 'assets/nav-line.svg' %}" style="margin-right: 3.37rem;">
-            <span style="margin-right: 3.37rem"><a href="#">To do</a></span>
-            <img src="{% static 'assets/nav-line.svg' %}" style="margin-right: 3.37rem">
-            <span style="margin-right: 3.37rem"><a href="#">Diary</a></span>
-            <img src="{% static 'assets/nav-line.svg' %}" style="margin-right: 3.37rem">
-            <span style="margin-right: 3.37rem"><a href="#">Event</a></span>
-            <img src="{% static 'assets/nav-line.svg' %}" style="margin-right: 3.37rem">
-            <span style="margin-right: 6.57rem;"><a href="#">Gallery</a></span>
-        </div>
-        <!-- 알람 버튼 -->
-        <div>
-            <img src="{% static 'assets/alert.svg' %}" style="margin-right: 3rem; margin-top: 4.2rem;">
-        </div>
-        <!-- 햄버거 메뉴 버튼 -->
-        <div class="hamburger-menu">
-            <img src="{% static 'assets/hambuger.svg' %}">
-        </div>
-        <nav class="menu">
-            <ul class="hamburger-list">
-                <li><a href="#">방명록 관리</a></li>
-                <div style="  width: 100%;
-                height: 0.09375rem;
-                background-color: #CECECE;
-                "></div>
-                <li><a href="#">친구 목록</a></li>
-                <div style="  width: 100%;
-                height: 0.09375rem;
-                background-color: #CECECE;
-                "></div>
-                <li><a href="#">친구 신청</a></li>
-                <div style="  width: 100%;
-                height: 0.09375rem;
-                background-color: #CECECE;
-                "></div>
-                <li><a href="#">로그아웃</a></li>
-                <div style="  width: 100%;
-                height: 0.09375rem;
-                background-color: #CECECE;
-                "></div>
-                <li><a href="#">탈퇴</a></li>
-            </ul>
-        </nav>
-    </header>
+{% block content %}
     <section>
         <div class="TodoTitle">
             <img src="{% static 'assets/Ellipse 67.svg' %}" alt="표시 점" class="titleImg">
@@ -87,7 +30,4 @@
             </button>
         </div>
     </section>
-    <script src="{% static 'js/moahtodo.js' %}"></script>
-</body>
-
-</html>
+    {% endblock %}

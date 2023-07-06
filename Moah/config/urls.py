@@ -12,12 +12,12 @@ from config.views import Gallery
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls',namespace='accounts')),
+    path('accounts/', include('accounts.urls', namespace='accounts')),
 
-    path('admin/', admin.site.urls),
     path('', Main.as_view(),name='main'),
     path('todo/',Todo.as_view(),name='todo'),
     path('diary/', include('diaries.urls', namespace='diaries')),
+    #path('diary/',Diary.as_view(),name='diary'),
     path('event/',Event.as_view(),name='event'),
     path('gallery/',Gallery.as_view(),name='gallery'),
     
