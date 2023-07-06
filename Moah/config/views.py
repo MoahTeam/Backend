@@ -7,10 +7,10 @@ class Todo(TemplateView):
     template_name ='posts/moahtodo.html'
     
 class Diary(TemplateView):
-    template_name ='contact.html'
+    template_name ='diary.html'
     
 class Event(TemplateView):
-    template_name ='portfolio.html'
+    template_name ='event.html'
     
 class Gallery(TemplateView):
-    template_name ='services.html'
+    template_name ='gallery.html'
