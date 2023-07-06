@@ -24,6 +24,9 @@
             <p class="checkList">
                 <input type="checkbox" id="select" onclick="toggleTask(this)">
                 <input type="text" placeholder="내용을 입력해주세요." id="field">
+                {% if post %}
+                    {{post.content}}
+                {% endif %}
             </p>
             <button class="minusButton">
                 <img src="{% static 'assets/Group 170.svg' %}" alt="삭제 버튼" class="deleteButton">
