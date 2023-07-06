@@ -27,9 +27,8 @@ def diary_list_view(request, id):
     if id == None:
         id = DateFormat(datetime.now()).format('m')
     if request.method == 'GET':
-        Diary.objects.filter(created_at__month=id)
         try:
-            post_list = Diary.objects.filter(writer = request.user)
+            post_list = Diary.objects.filter(writer = request.user, created_at__month=id)
         except:
             post_list = ""
         

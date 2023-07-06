@@ -63,19 +63,20 @@
 
     <section class="Date-list">
         <div class="Date-list-num">
-            <div class="Date-list-circle" id="jan"><a href="/Diary/date/January.html">Jan</a></div>
-            <div class="Date-list-circle" id="feb"><a href="/Diary/date/February.html">Feb</a></div>
-            <div class="Date-list-circle" id="mar"><a href="/Diary/date/March.html">Mar</a></div>
-            <div class="Date-list-circle" id="apr" style="background: var(--1, linear-gradient(180deg, #FF9F9F 0%, #FFBFBF 100%));
-            box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.15) inset;"><a href="/Diary/date/April.html">Apr</a></div>
-            <div class="Date-list-circle" id="may"><a href="/Diary/date/May.html">May</a></div>
-            <div class="Date-list-circle" id="jun"><a href="/Diary/date/June.html">Jun</a></div>
-            <div class="Date-list-circle" id="jul"><a href="/Diary/date/July.html">Jul</a></div>
-            <div class="Date-list-circle" id="aug"><a href="/Diary/date/August.html">Aug</a></div>
-            <div class="Date-list-circle" id="sep"><a href="/Diary/date/September.html">Sep</a></div>
-            <div class="Date-list-circle" id="oct"><a href="/Diary/date/October.html">Oct</a></div>
-            <div class="Date-list-circle" id="nov"><a href="/Diary/date/November.html">Nov</a></div>
-            <div class="Date-list-circle" id="dec"><a href="/Diary/date/December.html">Dec</a></div>
+            <div class="Date-list-circle" id="jan"><a href="{% url 'diaries:diary-list' 01%}">Jan</a></div>
+            <div class="Date-list-circle" id="feb"><a href="{% url 'diaries:diary-list' 02%}">Feb</a></div>
+            <div class="Date-list-circle" id="mar"><a href="{% url 'diaries:diary-list' 03%}">Mar</a></div>
+            <div class="Date-list-circle" id="apr" style="background: var(--1, linear-gradient(80deg, #FF9F9F 0%, #FFBFBF 100%));
+            box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.15) inset;"><a href="{% url 'diaries:diary-list' 04%}">Apr</a>
+            </div>
+            <div class="Date-list-circle" id="may"><a href="{% url 'diaries:diary-list' 05%}">May</a></div>
+            <div class="Date-list-circle" id="jun"><a href="{% url 'diaries:diary-list' 06%}">Jun</a></div>
+            <div class="Date-list-circle" id="jul"><a href="{% url 'diaries:diary-list' 07%}">Jul</a></div>
+            <div class="Date-list-circle" id="aug"><a href="{% url 'diaries:diary-list' 08%}">Aug</a></div>
+            <div class="Date-list-circle" id="sep"><a href="{% url 'diaries:diary-list' 09%}">Sep</a></div>
+            <div class="Date-list-circle" id="oct"><a href="{% url 'diaries:diary-list' 10%}">Oct</a></div>
+            <div class="Date-list-circle" id="nov"><a href="{% url 'diaries:diary-list' 11%}">Nov</a></div>
+            <div class="Date-list-circle" id="dec"><a href="{% url 'diaries:diary-list' 12%}">Dec</a></div>
         </div>
     </section>
 
