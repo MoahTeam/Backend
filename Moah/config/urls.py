@@ -17,7 +17,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Main.as_view(),name='main'),
     path('todo/',Todo.as_view(),name='todo'),
-    path('diary/', Diary.as_view(),name='diary'),
+    path('diary/', include('diaries.urls', namespace='diaries')),
     path('event/',Event.as_view(),name='event'),
     path('gallery/',Gallery.as_view(),name='gallery'),
     

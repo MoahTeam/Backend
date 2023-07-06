@@ -6,6 +6,8 @@ from django.contrib.auth import login, logout
 from users.models import User
 from django.shortcuts import render, redirect
 
+#from sqlalchemy.exc import IntegrityError
+
 #유효성 검사, 비번찾기
 
 def signup_view(request):
@@ -17,11 +19,14 @@ def signup_view(request):
         if email == '' or password == "":
             return render(request, 'Account/join.html')
         if password == passwordCk:
-            user = User.objects.create_user(
+            try: user = User.objects.create_user(
                 username = username,
                 email=email,
                 password=password
             )
+            except IntegrityError:
+                pass
+            
             auth.login(request, user)
             return redirect('/')
         return render(request, 'Account/join.html')
