@@ -1,3 +1,7 @@
+@import url('https://fonts.cdnfonts.com/css/inter');
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+
 .Date-list-num{
     display: flex;
     justify-content: space-between;
@@ -22,7 +26,241 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-
-    /* 월마다 변경될 css */
-    background: var(--1, linear-gradient(180deg, #FF9F9F 0%, #FFBFBF 100%));
+    cursor: pointer;
 }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3개의 열을 생성합니다. */
+    justify-content: center; /* 그리드 아이템들을 수평으로 중앙에 배치합니다. */
+    align-content: center; /* 그리드 아이템들을 수직으로 중앙에 배치합니다. */
+    gap: 1.5rem;    
+    margin: 0 auto;
+    margin-top: 7.5rem;
+}
+  
+.grid-item {
+    width: 23.75rem;
+    height: 18.125rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    background: #F1F1F1;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.15);
+    border: 3px solid #F1F1F1;
+}
+
+.date-time{
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--4, #848484);
+    font-size: 1.5625rem;
+    margin: 1.5rem;
+}
+
+.Writing{
+    color: var(--4, #848484);
+    font-size: 1.5625rem;
+    font-family: 'Pretendard-regular';
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    margin-top: 2rem;
+    width: 20.75rem;
+    height: 8rem;
+    flex-shrink: 0;
+}
+                
+.emote{
+    margin-left: 18.62rem;
+    width: 3.125rem;
+    height: 3.125rem;
+    flex-shrink: 0;
+}
+
+#next-writing{
+    margin-top: 0.25rem;
+    color: var(--4, #848484);
+    font-size: 0.9375rem;
+    font-family: 'Pretendard-regular';
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.grid-item:hover {
+    border: 3px solid var(--1, #FF9F9F);
+    cursor :pointer;
+}
+
+a{
+    text-decoration: none;
+    color: var(--4, #848484);
+    font-size: 1.5625rem;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.btn-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    width: 75rem;
+    margin-top: 1.5rem;
+}
+
+.btn-wrap img {
+    width: 4.375rem;
+    height: 4.375rem;
+    flex-shrink: 0;
+}
+
+
+form{
+    align-items: center;
+    margin: auto;
+}
+
+/* 공개 비공개 버튼 */
+.visibility-option{
+    margin-left: 3rem;
+    margin-top: 1.5rem;
+    font-size: 1.875rem;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    color: var(--4, #848484);
+
+    display: flex;
+    align-items: center;
+}
+
+.vertical-line {
+    width: 0.125rem;
+    height: 1.875rem;
+    background: #D9D9D9;
+    margin: 0 0.5em; /* 선과 글씨 사이의 여백 조절 */
+}
+
+.visibility-option input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    vertical-align: middle;
+}
+  
+.visibility-option label {
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+/* 제목 */
+#title-wrap > input{
+    width: 66.75rem;
+    padding: 3rem 3.5rem 3rem 3.5rem;
+    background: #F1F1F1;
+    border: none;
+    color: #777;
+    font-size: 1.875rem;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+}
+
+/* 내용 */
+textarea {
+    resize: none;
+    width: 66.75rem;
+    background: #F1F1F1;
+    border: none;
+    margin-top: 0.5rem;
+    padding: 3rem 3.5rem 0rem 3.5rem;
+    overflow: hidden;
+    height: 21rem;
+    color: var(--4, #848484);
+    font-size: 1.875rem;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+}
+  
+.text-content-Wrap{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    margin-top: 1.87remrem;
+    position: relative;
+}
+
+#textArea-wrap{
+    width: 73.75rem;
+    flex-shrink: 0;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    background: #F1F1F1;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.15);
+}
+
+textarea:focus{
+    outline: none;
+}
+
+input:focus{
+    outline: none;
+}
+
+hr {
+    border: none; /* 기본 선 제거 */
+    border-top: 2px solid #D9D9D9;
+}
+  
+
+.button-container button{
+    margin-top: 7.75rem;
+    background-color: white;
+    border: none;
+    color: var(--4, #848484);
+    font-size: 0.9375rem;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.button-container{
+    text-align: right;
+}
+
+.custom-button {
+    display: inline-block;
+    text-align: center;
+    margin-left: 3rem;
+}
+
+.custom-button img {
+    display: block;
+    margin: 0 auto;
+}
+
+.custom-button:hover{
+    cursor: pointer;
+}
+
+#savedBtn:hover img {
+    /* 호버 시 이미지 변경 */
+    content: url("/image/Diary-saveBtn-hover.svg");
+  }
+

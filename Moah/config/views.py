@@ -4,10 +4,10 @@ class Main(TemplateView):
     template_name ='main.html'
     
 class Todo(TemplateView):
-    template_name ='posts/moahtodo.html'
+    template_name ='todo/moahtodo.html'
     
 class Diary(TemplateView):
-    template_name ='diary.html'
+    template_name ='Diary/diary.html'
     
 class Event(TemplateView):
     template_name ='event.html'

@@ -1,0 +1,256 @@
+/*font 확인 필요*/
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+/* main-Frame*/
+
+body {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    width: 120rem;
+    height: auto;
+}
+
+header {
+    height: 4.12rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+
+.nav-list {
+    display: flex;
+    font-size: 1.875rem;
+    margin-top: 4.12rem;
+
+}
+
+.nav-list span a {
+    text-decoration: none;
+    color: var(--4, #848484);
+    font-family: 'Pretendard-Regular';
+    font-weight: 500;
+}
+
+.nav-list span a:hover {
+    color: var(--3, #434343);
+}
+
+.hamburger-menu {
+    width: 3rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    cursor: pointer;
+    margin-right: 20.04rem;
+    margin-top: 3.69rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu {
+    display: none;
+    flex-shrink: 0;
+    position: absolute;
+    top: calc(60px + 10px);
+    border-radius: 0.625rem;
+    background: rgba(241, 241, 241, 0.85);
+    box-shadow: -4px 4px 8px 0px rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(2px);
+    margin-right: 20.04rem;
+    width: 21.375rem;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu ul li {
+    text-align: left;
+    margin-top: 0.87rem;
+    padding: 9px;
+    margin-bottom: 0.87rem;
+}
+
+.menu ul li a {
+    color: var(--4, #848484);
+    text-decoration: none;
+    font-size: 1.5625rem;
+    font-weight: 300;
+    font-family: 'Pretendard-Regular';
+    margin-left: 10px;
+}
+
+.menu ul li:hover {
+    background: rgba(255, 191, 191, 0.50);
+}
+
+.menu.show {
+    display: block;
+}
+
+/*main-Fram*/
+
+/* 타이틀 */
+.TodoTitle {
+    margin-top: 5.38rem;
+    margin-left: 23.38rem;
+    display: flex;
+    align-items: center;
+}
+
+.titleImg {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    border-radius: 16px;
+    background: #434343;
+    margin-right: 1rem;
+}
+
+.TodoTitle .ToDo {
+    width: 6.625rem;
+    flex-shrink: 0;
+    color: #434343;
+    font-size: 2.5rem;
+    font-family: Pretendard;
+    font-weight: 300;
+}
+
+/* 달력 */
+.thisMonth {
+    width: 13.1875rem;
+    height: 5.75rem;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: #F1F1F1;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25) inset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.69rem;
+    margin-left: 23.19rem;
+}
+
+.thisMonth .month {
+    color: #434343;
+    font-size: 2.5rem;
+    font-family: Pretendard;
+    font-weight: 200;
+}
+
+/* 할 일 생성 */
+.actionButton {
+    width: 2.75rem;
+    height: 2.75rem;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-left: 90.37rem;
+    margin-top: 9.88rem;
+}
+
+.actionButton .createButton {
+    width: 2.75rem;
+    height: 2.75rem;
+    flex-shrink: 0;
+    border-radius: 44px;
+    background: #F1F1F1;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.15) inset;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.actionButton .createButton img {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+}
+
+.actionButton .saveButton {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.toDoList {
+    width: 73.75rem;
+    height: 3.625rem;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #F1F1F1;
+    margin-left: 23.12rem;
+    margin-top: 1.06rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.toDoList .checkList {
+    display: flex;
+    margin-left: 3.06rem;
+}
+
+.toDoList .checkList #select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 2.625rem;
+    height: 2.625rem;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: var(--5, #CECECE);
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.15) inset;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.toDoList .checkList #select:checked {
+    border-radius: 10px;
+    background: var(--1, linear-gradient(180deg, #FF9F9F 0%, #FFBFBF 100%));
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.15) inset;
+}
+
+.toDoList .checkList #field {
+    color: #434343;
+    font-size: 1.875rem;
+    font-family: Pretendard;
+    font-weight: 200;
+    background-color: transparent;
+    border: none;
+}
+
+.toDoList .checkList input[type="checkbox"]:checked~#field {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.toDoList .minusButton {
+    position: absolute;
+    right: 0.44rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    flex-shrink: 0;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}

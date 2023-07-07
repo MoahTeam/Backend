@@ -1,0 +1,36 @@
+{% extends 'base.html'  %}
+{% load static %}
+{% block content %}
+    <section>
+        <div class="TodoTitle">
+            <img src="{% static 'assets/Ellipse 67.svg' %}" alt="표시 점" class="titleImg">
+            <p class="ToDo">To Do</p>
+        </div>
+        <div class="thisMonth">
+            <p class="month">October</p>
+        </div>
+        <div class="calendar">
+
+        </div>
+        <div class="actionButton">
+            <button class="createButton">
+                <img src="{% static 'assets/+.svg' %}" alt="추가 버튼" class="plusButton">
+            </button>
+            <button class="saveButton">
+                <img src="{% static 'assets/Group 163.svg' %}" alt="저장 버튼" class="checkButton">
+            </button>
+        </div>
+        <div class="toDoList">
+            <p class="checkList">
+                <input type="checkbox" id="select" onclick="toggleTask(this)">
+                <input type="text" placeholder="내용을 입력해주세요." id="field">
+                {% if post %}
+                    {{post.content}}
+                {% endif %}
+            </p>
+            <button class="minusButton">
+                <img src="{% static 'assets/Group 170.svg' %}" alt="삭제 버튼" class="deleteButton">
+            </button>
+        </div>
+    </section>
+    {% endblock %}

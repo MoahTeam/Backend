@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>메인프레임</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/moahtodo.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Diary.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Galley.css' %}">
+</head>
+<body>
+    <!-- 메인 프레임 -->
+    <header>
+        <!-- nav list 링크 수정 하면서 작업 + 페이지 마다 폰트 color 다르게 수정 확인 필요 -->
+        <div class = "nav-list">
+            <span style = "margin-right: 3.37rem; margin-left: 28.69rem;"><a href = "{% url 'main'%}">Main</a></span>
+            <img src = "{% static 'assets/nav-line.svg' %}" style = "margin-right: 3.37rem;">
+            <span style = "margin-right: 3.37rem"><a href = "{% url 'todo'%}">To do</a></span>
+            <img src = "{% static 'assets/nav-line.svg' %}" style = "margin-right: 3.37rem">
+            <span style = "margin-right: 3.37rem"><a href = "{% url 'diaries:diary-post'%}">Diary</a></span>
+            <img src = "{% static 'assets/nav-line.svg' %}" style = "margin-right: 3.37rem">
+            <span style = "margin-right: 3.37rem"><a href = "{% url 'event'%}">Event</a></span>
+            <img src = "{% static 'assets/nav-line.svg' %}" style = "margin-right: 3.37rem">
+            <span style="margin-right: 6.57rem;"><a href = "{% url 'gallery'%}">Gallery</a></span>
+        </div>
+        <!-- 알람 버튼 -->
+        <div>
+            <img src ="{% static 'assets/alert.svg' %}/" style="margin-right: 3rem; margin-top: 4.2rem;">
+        </div>
+        <!-- 햄버거 메뉴 버튼 -->
+        <div class="hamburger-menu">
+            <img src = "{% static 'assets/hambuger.svg' %}">
+        </div>
+        <nav class="menu">
+            <ul class = "hamburger-list">
+                <li><a href="#">방명록 관리</a></li>
+                <div style="  width: 100%;
+                height: 0.09375rem;
+                background-color: #CECECE;
+                "></div>
+                <li><a href="#">친구 목록</a></li>
+                <div style="  width: 100%;
+                height: 0.09375rem;
+                background-color: #CECECE;
+                "></div>
+                <li><a href="#">친구 신청</a></li>
+                <div style="  width: 100%;
+                height: 0.09375rem;
+                background-color: #CECECE;
+                "></div>
+                <li><a href="#">로그아웃</a></li>
+                <div style="  width: 100%;
+                height: 0.09375rem;
+                background-color: #CECECE;
+                "></div>
+                <li><a href="#">탈퇴</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- 메인 프레임 끝 -->
+
+    <section class="Date-list">
+        <div class="Date-list-num">
+            <div class="Date-list-circle" id="jan" style="background: var(--1, linear-gradient(180deg, #FF9F9F 0%, #FFBFBF 100%));
+            box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.15) inset;"><a href="/Gallery/Gallery-Jan.html">Jan</a></div>
+            <div class="Date-list-circle" id="feb"><a href="/Gallery/Gallery-Feb.html">Feb</a></div>
+            <div class="Date-list-circle" id="mar"><a href="/Gallery/Gallery-Mar.html">Mar</a></div>
+            <div class="Date-list-circle" id="apr"><a href="/Gallery/Gallery-Apr.html">Apr</a></div>
+            <div class="Date-list-circle" id="may"><a href="/Gallery/Gallery-May.html">May</a></div>
+            <div class="Date-list-circle" id="jun"><a href="/Gallery/Gallery-Jun.html">Jun</a></div>
+            <div class="Date-list-circle" id="jul"><a href="/Gallery/Gallery-Jul.html">Jul</a></div>
+            <div class="Date-list-circle" id="aug"><a href="/Gallery/Gallery-Aug.html">Aug</a></div>
+            <div class="Date-list-circle" id="sep"><a href="/Gallery/Gallery-Sep.html">Sep</a></div>
+            <div class="Date-list-circle" id="oct"><a href="/Gallery/Gallery-Oct.html">Oct</a></div>
+            <div class="Date-list-circle" id="nov"><a href="/Gallery/Gallery-Nov.html">Nov</a></div>
+            <div class="Date-list-circle" id="dec"><a href="/Gallery/Gallery-Dec.html">Dec</a></div>
+        </div>
+    </section>
+    
+    {% block content %}
+
+    {% endblock %}
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/moahtodo.js' %}"></script>
+    <script src="{% static 'js/Diary.js' %}"></script>
+</body>
+</html>
