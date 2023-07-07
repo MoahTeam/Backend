@@ -42,4 +42,4 @@ def diary_list_view(request, id=None):
             print("SDSFDFDf", page)
             page_obj = paginator.page(page)
 
-    return render(request, 'Diary/Diary.html', {'post_list': post_list, 'page_obj':page_obj, 'paginator':paginator})
+    return render(request, 'Diary/' + str(id).lstrip("0") + '.html', {'post_list': post_list, 'page_obj':page_obj, 'paginator':paginator})
