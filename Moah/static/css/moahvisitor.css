@@ -1,0 +1,80 @@
+/*font 확인 필요*/
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+/* 방명록 */
+.guestBook {
+    width: 13.1875rem;
+    height: 5.75rem;
+    flex-shrink: 0;
+    margin-top: 15rem;
+    margin-left: 53.41rem;
+    border-radius: 30px;
+    background: #F1F1F1;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25) inset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.guestBook p {
+    color: #434343;
+    font-size: 2.5rem;
+    font-family: Pretendard;
+    font-weight: 200;
+}
+
+.visitorImg {
+    width: 9.625rem;
+    height: 9.9375rem;
+    flex-shrink: 0;
+    background: url(<path-to-image>), lightgray -20.604px -32.604px / 113.386% 164.326% no-repeat;
+    border-radius: 125px;
+    background: #CECECE;
+}
+.visitorContent {
+    width: 49rem;
+    height: 8.6875rem;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: var(--6, #F1F1F1);
+    position: relative;
+}
+.visitorContent .visitorName {
+    color: #434343;
+    font-size: 1.875rem;
+    font-family: Pretendard;
+    font-weight: 200;
+    position: absolute;
+    top: 0.75rem;
+    left: 2rem;
+}
+.visitorContent .visitDate {
+    color: #434343;
+    font-size: 1.25rem;
+    font-family: Pretendard;
+    font-weight: 200;
+    position: absolute;
+    top: 1.37rem;
+    left: 8.5rem;
+}
+.visitorContent .visitorComment {
+    color: #434343;
+    font-size: 1.25rem;
+    font-family: Pretendard;
+    font-weight: 200;
+    position: absolute;
+    top: 4rem;
+    left: 2rem;
+}
+.visitors {
+    display: flex;
+    align-items: center;
+    gap: 1.06rem;
+    margin-left: 30.12rem;
+    margin-top: 17.63rem;
+}
