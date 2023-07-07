@@ -18,31 +18,32 @@
     </div>
   </section>
 
-    <form>
-        <div class="button-container">
-            <button class="custom-button"><img src="/image/Diary-addPhoto-btn.svg"><p>사진추가</ㅔ></button>
-            <button class="custom-button" id="savedBtn"><img src="/image/Diary-saveBtn.svg"><p>저장하기</p></button>
-          </div>    
-        <div class="text-content-Wrap">
-          <div id="textArea-wrap">
-            <div id="title-wrap">
-              <input type="text" id="title" placeholder="제목을 입력하세요" name="text-title">
-              <hr>
-            </div>
-            <div class="visibility-option">
-              <input type="radio" id="public" name="visibility" value="public" checked onclick="toggleVisibility('public')">
-              <label for="public">공개</label>
-              <div class="vertical-line"></div>
-              <input type="radio" id="private" name="visibility" value="private" onclick="toggleVisibility('private')">
-              <label for="private">비공개</label>
-            </div>
-            <div>
-              <!-- <div contenteditable="true">이미지</div> -->
-              <textarea id="content" rows="1" placeholder="내용을 입력하세요" onchange="handleResizeHeight()"></textarea>
-            </div>
-          </div>
+  <form>
+    <div class="button-container">
+      <button class="custom-button" id="savedBtn" disabled><img>
+        <p>저장하기</p>
+      </button>
+    </div>
+    <div class="text-content-Wrap">
+      <div id="textArea-wrap">
+        <div id="title-wrap">
+          <input type="text" id="title" placeholder="제목을 입력하세요" name="text-title" oninput="checkInput()">
+          <hr>
         </div>
-      </form>
+        <div class="visibility-option">
+          <input type="radio" id="public" name="visibility" value="public" checked onclick="toggleVisibility('public')">
+          <label for="public">공개</label>
+          <div class="vertical-line"></div>
+          <input type="radio" id="private" name="visibility" value="private" onclick="toggleVisibility('private')">
+          <label for="private">비공개</label>
+        </div>
+        <div>
+          <!-- <div contenteditable="true">이미지</div> -->
+          <textarea id="content" rows="1" placeholder="내용을 입력하세요" onchange="handleResizeHeight()"></textarea>
+        </div>
+      </div>
+    </div>
+  </form>
       
 
     <script src="/Diary/Diary.js"></script>

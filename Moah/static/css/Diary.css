@@ -255,12 +255,18 @@ hr {
     margin: 0 auto;
 }
 
-.custom-button:hover{
+.custom-button[disabled]{
+    cursor: default;
+}
+
+.custom-button[disabled] img {
+    content: url("/image/Diary-saveBtn.svg"); 
+}
+
+.custom-button {
     cursor: pointer;
 }
 
-#savedBtn:hover img {
-    /* 호버 시 이미지 변경 */
+.custom-button img {
     content: url("/image/Diary-saveBtn-hover.svg");
-  }
-
+}

@@ -66,6 +66,7 @@ header {
     box-shadow: -4px 4px 8px 0px rgba(0, 0, 0, 0.20);
     backdrop-filter: blur(2px);
     width: 21.375rem;
+    z-index: 1;
 }
 
 .menu ul {
