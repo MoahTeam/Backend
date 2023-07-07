@@ -1,52 +1,89 @@
-{% extends 'base.html'  %}
+{% extends 'base.html' %}
 {% load static %}
 {% block content %}
-  <section class="Date-list">
-    <div class="Date-list-num">
-      <div class="Date-list-circle" id="jan">Jan</div>
-      <div class="Date-list-circle" id="feb">Feb</div>
-      <div class="Date-list-circle" id="mar">Mar</div>
-      <div class="Date-list-circle" id="apr">Apr</div>
-      <div class="Date-list-circle" id="may">May</div>
-      <div class="Date-list-circle" id="jun">Jun</div>
-      <div class="Date-list-circle" id="jul">Jul</div>
-      <div class="Date-list-circle" id="aug">Aug</div>
-      <div class="Date-list-circle" id="sep">Sep</div>
-      <div class="Date-list-circle" id="oct">Oct</div>
-      <div class="Date-list-circle" id="nov">Nov</div>
-      <div class="Date-list-circle" id="dec">Dec</div>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<section class="Date-list">
+  <div class="Date-list-num">
+    <div class="Date-list-circle" id="jan">Jan</div>
+    <div class="Date-list-circle" id="feb">Feb</div>
+    <div class="Date-list-circle" id="mar">Mar</div>
+    <div class="Date-list-circle" id="apr">Apr</div>
+    <div class="Date-list-circle" id="may">May</div>
+    <div class="Date-list-circle" id="jun">Jun</div>
+    <div class="Date-list-circle" id="jul">Jul</div>
+    <div class="Date-list-circle" id="aug">Aug</div>
+    <div class="Date-list-circle" id="sep">Sep</div>
+    <div class="Date-list-circle" id="oct">Oct</div>
+    <div class="Date-list-circle" id="nov">Nov</div>
+    <div class="Date-list-circle" id="dec">Dec</div>
+  </div>
+</section>
+
+<form method="POST">
+  {% csrf_token %}
+  <div class="button-container">
+    <button class="custom-button"><img src="/image/Diary-addPhoto-btn.svg">
+      <p>사진추가</p>
+    </button>
+    <button type="submit" class="custom-button" id="savedBtn"><img src="/image/Diary-saveBtn.svg">
+      <p>저장하기</p>
+    </button>
+  </div>
+  <div class="text-content-Wrap">
+    <div id="textArea-wrap">
+      <div id="title-wrap">
+        <input type="text" id="title" placeholder="제목을 입력하세요" name="title">
+        <hr>
+      </div>
+      <div class="visibility-option">
+        <input type="radio" id="public" name="secure" value='True' checked onclick="toggleVisibility('public')">
+        <label for="public">공개</label>
+        <div class="vertical-line"></div>
+        <input type="radio" id="private" name="secure" value='False' onclick="toggleVisibility('private')">
+        <label for="private">비공개</label>
+      </div>
+      <div>
+        <!-- <div contenteditable="true">이미지</div> -->
+        <textarea id="summernote" name="content" rows="1" placeholder="내용을 입력하세요"
+          onchange="handleResizeHeight()"></textarea>
+      </div>
     </div>
-  </section>
+  </div>
+</form>
 
-    <form>
-        <div class="button-container">
-            <button class="custom-button"><img src="/image/Diary-addPhoto-btn.svg"><p>사진추가</ㅔ></button>
-            <button class="custom-button" id="savedBtn"><img src="/image/Diary-saveBtn.svg"><p>저장하기</p></button>
-          </div>    
-        <div class="text-content-Wrap">
-          <div id="textArea-wrap">
-            <div id="title-wrap">
-              <input type="text" id="title" placeholder="제목을 입력하세요" name="text-title">
-              <hr>
-            </div>
-            <div class="visibility-option">
-              <input type="radio" id="public" name="visibility" value="public" checked onclick="toggleVisibility('public')">
-              <label for="public">공개</label>
-              <div class="vertical-line"></div>
-              <input type="radio" id="private" name="visibility" value="private" onclick="toggleVisibility('private')">
-              <label for="private">비공개</label>
-            </div>
-            <div>
-              <!-- <div contenteditable="true">이미지</div> -->
-              <textarea id="content" rows="1" placeholder="내용을 입력하세요" onchange="handleResizeHeight()"></textarea>
-            </div>
-          </div>
-        </div>
-      </form>
-      
 
-    <script src="/Diary/Diary.js"></script>
-    <script src="/main/main.js"></script>
+<script src="/Diary/Diary.js"></script>
+<script src="/main/main.js"></script>
+<script>
+  $(function () {
+    $('#summernote').summernote({
+      height: 400, focus: true, width: "100%",
+      lang: 'ko-KR',
+
+      //이미지 업로드 시 width 적용
+      callbacks: {
+        onImageUpload: function (image) {
+          console.log('in');
+          const file = image[0];
+          const reader = new FileReader();
+          reader.onloadend = function () {
+            const image = $('<img>').attr('src', reader.result);
+            image.attr('width', '50%');
+            $('#summernote').summernote("insertNode", image[0]);
+          }
+          reader.readAsDataURL(file);
+        }
+      }
+    });
+
+    const markupStr = '{{form.content.value|safe|addslashes|default_if_none:""}}'
+    $('#summernote').summernote('code', markupStr);
+  });
+</script>
 </body>
 
 </html>
+{% endblock %}
