@@ -14,7 +14,7 @@ class Diary(models.Model):
         ('7', "보통"),
     ]
     #feeling 필수인지 없어도 되는지 물어보기
-    feeling = models.CharField(verbose_name="기분", max_length=2, choices=FEEL_CHOICES)
+    feeling = models.CharField(verbose_name="기분", max_length=2, choices=FEEL_CHOICES, default=2)
     title = title = models.CharField(verbose_name="제목", max_length=80)
     image = models.ImageField(verbose_name="이미지", null = True, blank = True)
     content = models.TextField("내용")

@@ -84,26 +84,27 @@
     </div>
   </section>
 
-  <form>
+  <form method="POST">
+    {% csrf_token %}
     <div class="button-container">
       <button class="custom-button"><img src="/image/Diary-addPhoto-btn.svg">
-        <p>사진추가</ㅔ>
+        <p>사진추가</p>
       </button>
-      <button class="custom-button" id="savedBtn"><img src="/image/Diary-saveBtn.svg">
+      <button type="submit" class="custom-button" id="savedBtn"><img src="/image/Diary-saveBtn.svg">
         <p>저장하기</p>
       </button>
     </div>
     <div class="text-content-Wrap">
       <div id="textArea-wrap">
         <div id="title-wrap">
-          <input type="text" id="title" placeholder="제목을 입력하세요" name="text-title">
+          <input type="text" id="title" placeholder="제목을 입력하세요" name="title">
           <hr>
         </div>
         <div class="visibility-option">
-          <input type="radio" id="public" name="visibility" value="public" checked onclick="toggleVisibility('public')">
+          <input type="radio" id="public" name="secure" value='True' checked onclick="toggleVisibility('public')">
           <label for="public">공개</label>
           <div class="vertical-line"></div>
-          <input type="radio" id="private" name="visibility" value="private" onclick="toggleVisibility('private')">
+          <input type="radio" id="private" name="secure" value='False' onclick="toggleVisibility('private')">
           <label for="private">비공개</label>
         </div>
         <div>
@@ -132,7 +133,7 @@
             const reader = new FileReader();
             reader.onloadend = function () {
               const image = $('<img>').attr('src', reader.result);
-              image.attr('width', '100%');
+              image.attr('width', '50%');
               $('#summernote').summernote("insertNode", image[0]);
             }
             reader.readAsDataURL(file);
