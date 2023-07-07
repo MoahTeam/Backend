@@ -7,102 +7,6 @@
     font-style: normal;
 }
 
-/* main-Frame*/
-
-body {
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-    margin: 0;
-    padding: 0;
-    width: 120rem;
-    height: auto;
-}
-
-header {
-    height: 4.12rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    
-}
-
-.nav-list{
-    display: flex;
-    font-size: 1.875rem;
-    margin-top: 4.12rem;
-    
-}
-
-.nav-list span a{
-    text-decoration: none;
-    color: var(--4, #848484);
-    font-family: 'Pretendard-Regular';
-    font-weight: 500;
-}
-
-.nav-list span a:hover{
-    color: var(--3, #434343);
-}
-
-.hamburger-menu {
-    width: 3rem;
-    height: 2.5rem;
-    flex-shrink: 0;
-    cursor: pointer;
-    margin-right: 20.04rem;
-    margin-top: 3.69rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.menu {
-    display: none;
-    flex-shrink: 0;
-    position: absolute;
-    top: calc(60px + 10px);
-    border-radius: 0.625rem;
-    background: rgba(241, 241, 241, 0.85);
-    box-shadow: -4px 4px 8px 0px rgba(0, 0, 0, 0.20);
-    backdrop-filter: blur(2px);
-    margin-right: 20.04rem;
-    width: 21.375rem;
-    z-index: 2;
-}
-
-.menu ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.menu ul li {
-    text-align: left;
-    margin-top: 0.87rem;
-    padding: 9px;
-    margin-bottom: 0.87rem;
-}
-
-.menu ul li a {
-    color: var(--4, #848484);
-    text-decoration: none;
-    font-size: 1.5625rem;
-    font-weight: 300;
-    font-family: 'Pretendard-Regular';
-    margin-left: 10px;
-}
-
-.menu ul li:hover {
-    background: rgba(255, 191, 191, 0.50);
-}
-
-.menu.show {
-    display: block;
-}
-
-/*main-Fram*/
-
 /* 프로필 */
 
 .profile {
@@ -220,6 +124,7 @@ header {
     position: absolute;
     top: 28.69rem;
     left: 10.56rem;
+    cursor: pointer;
 }
 
 .visitorManage {
@@ -354,7 +259,7 @@ header {
 }
 
 /* 메인페이지에서 간이 To do */
-/* .TodoBox {
+.TodoBox {
     display: flex;
     margin-left: 23.13rem;
     margin-top: 1.13rem;
@@ -376,7 +281,46 @@ header {
 }
 #Todocheckbox {
     margin-left: 9.81rem;
-} */
+}
+
+/* 메인페이지에서 간이 Diary */
+.DiaryBox {
+    display: flex;
+    margin-left: 23.13rem;
+    margin-top: 1.13rem;
+    width: 73.75rem;
+    height: 24.9375rem;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #F1F1F1;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+.DiaryBox .diaryDate {
+    color: var(--5, #CECECE);
+    font-size: 1.5625rem;
+    font-family: Inter;
+    position: absolute;
+    left: 2rem;
+    top: 1.5rem;
+}
+.DiaryBox .diaryContent {
+    color: var(--3, #434343);
+    font-size: 1.875rem;
+    font-family: Pretendard;
+    font-weight: 300;
+    position: absolute;
+    top: 8.44rem;
+    left: 5.5rem;
+}
+.DiaryBox .diarySecret {
+    width: 1.9375rem;
+    height: 2.625rem;
+    flex-shrink: 0;
+    position: absolute;
+    top: 19.56rem;
+    left: 69.56rem;
+}
 
 /* 친구 목록 겸 추가 */
 .addFriend {

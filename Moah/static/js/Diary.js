@@ -45,3 +45,17 @@ $textarea.oninput=(event)=>{
   $target.style.height=0;
   $target.style.height=DEFAULT_HEIGHT+$target.scrollHeight + 'px';
 };
+
+function checkInput() {
+  var titleInput = document.getElementById("title");
+  var savedBtn = document.getElementById("savedBtn");
+  var saveBtnImg = document.querySelector("#savedBtn img");
+
+  if (titleInput.value.trim() !== "") {
+      savedBtn.disabled = false;
+      saveBtnImg.src = "/image/Diary-saveBtn-hover.svg"; // 활성화 상태 이미지 소스
+  } else {
+      savedBtn.disabled = true;
+      saveBtnImg.src = "/image/Diary-saveBtn.svg"; // 비활성화 상태 이미지 소스
+  }
+}
