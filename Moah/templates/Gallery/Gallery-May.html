@@ -1,7 +1,23 @@
 {% extends 'gallery.html'  %}
 {% load static %}
 {% block content %}
-
+<section class="Date-list">
+    <div class="Date-list-num">
+        <div class="Date-list-circle" id="jan"><a href="/Gallery/Gallery-Jan.html">Jan</a></div>
+        <div class="Date-list-circle" id="feb"><a href="/Gallery/Gallery-Feb.html">Feb</a></div>
+        <div class="Date-list-circle" id="mar"><a href="/Gallery/Gallery-Mar.html">Mar</a></div>
+        <div class="Date-list-circle" id="apr"><a href="/Gallery/Gallery-Apr.html">Apr</a></div>
+        <div class="Date-list-circle" id="may" style="background: var(--1, linear-gradient(180deg, #FF9F9F 0%, #FFBFBF 100%));
+        box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.15) inset;"><a href="/Gallery/Gallery-May.html">May</a></div>
+        <div class="Date-list-circle" id="jun"><a href="{% url 'gallery:jun' %}">Jun</a></div>
+        <div class="Date-list-circle" id="jul"><a href="{% url 'gallery:jul' %}">Jul</a></div>
+        <div class="Date-list-circle" id="aug"><a href="{% url 'gallery:aug' %}">Aug</a></div>
+        <div class="Date-list-circle" id="sep"><a href="{% url 'gallery:sep' %}">Sep</a></div>
+        <div class="Date-list-circle" id="oct"><a href="{% url 'gallery:oct' %}">Oct</a></div>
+        <div class="Date-list-circle" id="nov"><a href="{% url 'gallery:nov' %}">Nov</a></div>
+        <div class="Date-list-circle" id="dec"><a href="{% url 'gallery:dec' %}">Dec</a></div>
+    </div>
+</section>
     <div>
         <div id="calendar-date">May</div>
         <div id="calendar-cantainer-day"></div>
