@@ -29,6 +29,14 @@
             <p class="Writing">{{page.title}}</p>
             <p class="emote">{{page.feeling}}</p>
         </div>
+        {% comment %} 비공개 버튼 {% endcomment %}
+        <div class="grid-item">
+            <p class="date-time">2023/01/01</p>
+            <div style="text-align: center; margin-top: 4.31rem;">
+                <img src= {% static 'assets/lock-img.svg' %}>
+                <p id="lock-content" style="color: #CECECE;">비공개</p>
+            </div>
+        </div>
         <!-- 새글 작성 버튼 -->
         {% if forloop.counter|divisibleby:3 %}
     </div>
