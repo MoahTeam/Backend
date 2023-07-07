@@ -7,7 +7,7 @@ class Todo(TemplateView):
     template_name ='todo/moahtodo.html'
     
 class Diary(TemplateView):
-    template_name ='Diary/Diary.html'
+    template_name ='Diary/diary.html'
     
 class Event(TemplateView):
     template_name ='event.html'
