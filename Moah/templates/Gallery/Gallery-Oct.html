@@ -1,0 +1,102 @@
+{% extends 'gallery.html'  %}
+{% load static %}
+{% block content %}
+
+    <div>
+        <div id="calendar-date">Oct</div>
+        <div id="calendar-cantainer-day"></div>
+        <div id="calendar-container"></div>
+    </div>
+    <div>
+        <!-- 선택된 날짜 나오는 부분 -->
+        <div id="selected-date"></div>
+    </div>
+    <div>
+        <!-- 선택된 날짜의 사진 요소 나오는 부분 -->
+        <div id="image-container"></div>
+    </div>
+
+    <script>
+        // 2023년 10월의 달력 객체 생성 함수
+        function createOctober2023Calendar() {
+            var calendarContainer = document.getElementById("calendar-container");
+            var calendar = document.createElement("div");
+            calendar.className = "calendar";
+
+            // 2023년 10월 1일의 요일을 계산
+            var octoberFirstDay = new Date(2023, 9, 1).getDay();
+
+            // 전체 요일을 저장하는 배열
+            var weekdays = ["일", "월", "화", "수", "목", "금", "토"];
+
+            // 요일 헤더 추가
+            for (var i = 0; i < weekdays.length; i++) {
+                var calendarDay = document.createElement("div");
+                calendarDay.className = "calendar-day";
+                if (i === 0) {
+                    calendarDay.className += " Sun"; // 주말에 대한 클래스 추가
+                } else if (i === 6) {
+                    calendarDay.className += " Satur";
+                } else {
+                    calendarDay.className += " week";
+                }
+                calendarDay.textContent = weekdays[i];
+                calendar.appendChild(calendarDay);
+            }
+
+            // 10월의 일수를 계산
+            var daysInOctober = new Date(2023, 10, 0).getDate();
+
+            // 빈 공백 요소 추가
+            for (var i = 0; i < octoberFirstDay; i++) {
+                var calendarDay = document.createElement("div");
+                calendarDay.className = "calendar-day";
+                calendar.appendChild(calendarDay);
+            }
+
+            // 날짜 요소 추가
+            for (var day = 1; day <= daysInOctober; day++) {
+                var calendarDay = document.createElement("div");
+                calendarDay.className = "calendar-day";
+                if (day === 1 || day === 3 || day === 8 || day === 9 || day === 15 || day === 22 || day === 29) {
+                    calendarDay.className += " holiday"; // 공휴일에 대한 클래스 추가
+                }
+                calendarDay.textContent = day;
+                calendarDay.addEventListener("click", function () {
+                    handleDateClick(this.textContent);
+                });
+
+                calendar.appendChild(calendarDay);
+            }
+
+            calendarContainer.appendChild(calendar);
+        }
+
+        // 날짜 클릭 이벤트 핸들러
+        function handleDateClick(day) {
+            var selectedDateElement = document.getElementById("selected-date");
+            var selectedDate = new Date(2023, 9, day);
+            var year = selectedDate.getFullYear();
+            var month = selectedDate.getMonth() + 1;
+            var date = selectedDate.getDate();
+
+            // 선택된 날짜 정보 업데이트
+            selectedDateElement.textContent = "October / " + year + ". " + month + ". " + date;
+
+            // 이미지를 가져오고 표시하는 로직 추가
+            var imageContainer = document.getElementById("image-container");
+            // 예시로 날짜와 일치하는 이미지 URL을 가져옵니다.
+            var imageURL = "/Gallery/images/" + year + "-" + month + "-" + date + ".jpg";
+            // 이미지 요소 생성
+            var imageElement = document.createElement("img");
+            imageElement.src = imageURL;
+            // 이미지를 표시할 요소에 추가
+            imageContainer.innerHTML = ""; // 이전 이미지 제거
+            imageContainer.appendChild(imageElement);
+        }
+
+        // 2023년 10월 달력 생성 함수 호출
+        createOctober2023Calendar();
+    </script>
+
+{% endblock %}

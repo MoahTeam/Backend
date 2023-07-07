@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gallery-Apr</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/main/main.css">
+    <link rel="stylesheet" type="text/css" href="/Diary/Diary.css">
+    <link rel="stylesheet" type="text/css" href="/Gallery/Galley.css">
+</head>
+
+<body>
+    <!-- 메인 프레임 -->
+    <header>
+        <!-- nav list 링크 수정 하면서 작업 + 페이지 마다 폰트 color 다르게 수정 확인 필요 -->
+        <div class="nav-list">
+            <span style="margin-right: 3.37rem; margin-left: 28.69rem;"><a href="#">Main</a></span>
+            <img src="/image/nav-line.svg" style="margin-right: 3.37rem;">
+            <span style="margin-right: 3.37rem"><a href="#">To do</a></span>
+            <img src="/image/nav-line.svg" style="margin-right: 3.37rem">
+            <span style="margin-right: 3.37rem"><a href="#">Diary</a></span>
+            <img src="/image/nav-line.svg" style="margin-right: 3.37rem">
+            <span style="margin-right: 3.37rem"><a href="#">Event</a></span>
+            <img src="/image/nav-line.svg" style="margin-right: 3.37rem">
+            <span style="margin-right: 6.57rem;"><a href="#">Gallery</a></span>
+        </div>
+        <!-- 알람 버튼 -->
+        <div>
+            <img src="/image/alert.svg" style="margin-right: 3rem; margin-top: 4.2rem;">
+        </div>
+        <!-- 햄버거 메뉴 버튼 -->
+        <div class="hamburger-menu">
+            <img src="/image/hambuger.svg">
+        </div>
+        <nav class="menu">
+            <ul class="hamburger-list">
+                <li><a href="#">방명록 관리</a></li>
+                <div style="  width: 100%;
+                height: 0.09375rem;
+                background-color: #CECECE;
+              "></div>
+                <li><a href="#">친구 목록</a></li>
+                <div style="  width: 100%;
+                height: 0.09375rem;
+                background-color: #CECECE;
+              "></div>
+                <li><a href="#">친구 신청</a></li>
+                <div style="  width: 100%;
+                height: 0.09375rem;
+                background-color: #CECECE;
+              "></div>
+                <li><a href="#">로그아웃</a></li>
+                <div style="  width: 100%;
+                height: 0.09375rem;
+                background-color: #CECECE;
+              "></div>
+                <li><a href="#">탈퇴</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 메인 프레임 끝 -->
+
+    <section class="Date-list">
+        <div class="Date-list-num">
+            <div class="Date-list-circle" id="jan"><a href="/Gallery/Gallery-Jan.html">Jan</a></div>
+            <div class="Date-list-circle" id="feb"><a href="/Gallery/Gallery-Feb.html">Feb</a></div>
+            <div class="Date-list-circle" id="mar"><a href="/Gallery/Gallery-Mar.html">Mar</a></div>
+            <div class="Date-list-circle" id="apr" style="background: var(--1, linear-gradient(180deg, #FF9F9F 0%, #FFBFBF 100%));
+            box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.15) inset;"><a href="/Gallery/Gallery-Apr.html">Apr</a></div>
+            <div class="Date-list-circle" id="may"><a href="/Gallery/Gallery-May.html">May</a></div>
+            <div class="Date-list-circle" id="jun"><a href="/Gallery/Gallery-Jun.html">Jun</a></div>
+            <div class="Date-list-circle" id="jul"><a href="/Gallery/Gallery-Jul.html">Jul</a></div>
+            <div class="Date-list-circle" id="aug"><a href="/Gallery/Gallery-Aug.html">Aug</a></div>
+            <div class="Date-list-circle" id="sep"><a href="/Gallery/Gallery-Sep.html">Sep</a></div>
+            <div class="Date-list-circle" id="oct"><a href="/Gallery/Gallery-Oct.html">Oct</a></div>
+            <div class="Date-list-circle" id="nov"><a href="/Gallery/Gallery-Nov.html">Nov</a></div>
+            <div class="Date-list-circle" id="dec"><a href="/Gallery/Gallery-Dec.html">Dec</a></div>
+        </div>
+    </section>
+
+
+    <div>
+        <div id="calendar-date">Apr</div>
+        <div id="calendar-cantainer-day"></div>
+        <div id="calendar-container"></div>
+    </div>
+    <div>
+        <!-- 선택된 날짜 나오는 부분 -->
+        <div id="selected-date"></div>
+    </div>
+    <div>
+        <!-- 선택된 날짜의 사진 요소 나오는 부분 -->
+        <div id="image-container"></div>
+    </div>
+
+    <script>
+        // 2023년 4월의 달력 객체 생성 함수
+        function createApril2023Calendar() {
+            var calendarContainer = document.getElementById("calendar-container");
+            var calendar = document.createElement("div");
+            calendar.className = "calendar";
+
+            // 2023년 4월 1일의 요일을 계산
+            var aprilFirstDay = new Date(2023, 3, 1).getDay();
+
+            // 전체 요일을 저장하는 배열
+            var weekdays = ["일", "월", "화", "수", "목", "금", "토"];
+
+            // 요일 헤더 추가
+            for (var i = 0; i < weekdays.length; i++) {
+                var calendarDay = document.createElement("div");
+                calendarDay.className = "calendar-day";
+                if (i === 0) {
+                    calendarDay.className += " Sun"; // 주말에 대한 클래스 추가
+                } else if (i === 6) {
+                    calendarDay.className += " Satur";
+                } else {
+                    calendarDay.className += " week";
+                }
+                calendarDay.textContent = weekdays[i];
+                calendar.appendChild(calendarDay);
+            }
+
+            // 4월의 일수를 계산
+            var daysInApril = new Date(2023, 4, 0).getDate();
+
+            // 빈 공백 요소 추가
+            for (var i = 0; i < aprilFirstDay; i++) {
+                var calendarDay = document.createElement("div");
+                calendarDay.className = "calendar-day";
+                calendar.appendChild(calendarDay);
+            }
+
+            // 날짜 요소 추가
+            for (var day = 1; day <= daysInApril; day++) {
+                var calendarDay = document.createElement("div");
+                calendarDay.className = "calendar-day";
+                if (day === 2 || day === 9 || day === 16 || day === 23 || day === 30) {
+                    calendarDay.className += " holiday"; // 공휴일에 대한 클래스 추가
+                }
+                calendarDay.textContent = day;
+                calendarDay.addEventListener("click", function () {
+                    handleDateClick(this.textContent);
+                });
+
+                calendar.appendChild(calendarDay);
+            }
+
+            calendarContainer.appendChild(calendar);
+        }
+
+        // 날짜 클릭 이벤트 핸들러
+        function handleDateClick(day) {
+            var selectedDateElement = document.getElementById("selected-date");
+            var selectedDate = new Date(2023, 3, day);
+            var year = selectedDate.getFullYear();
+            var month = selectedDate.getMonth() + 1;
+            var date = selectedDate.getDate();
+
+            // 선택된 날짜 정보 업데이트
+            selectedDateElement.textContent = "Apr / " + year + ". " + month + ". " + date;
+
+            // 이미지를 가져오고 표시하는 로직 추가
+            var imageContainer = document.getElementById("image-container");
+            // 예시로 날짜와 일치하는 이미지 URL을 가져옵니다.
+            var imageURL = "/Gallery/images/" + year + "-" + month + "-" + date + ".jpg";
+            // 이미지 요소 생성
+            var imageElement = document.createElement("img");
+            imageElement.src = imageURL;
+            // 이미지를 표시할 요소에 추가
+            imageContainer.innerHTML = ""; // 이전 이미지 제거
+            imageContainer.appendChild(imageElement);
+        }
+
+
+        // 2023년 4월 달력 생성 함수 호출
+        createApril2023Calendar();
+    </script>
+
+
+{% endblock %}
