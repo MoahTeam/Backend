@@ -13,6 +13,7 @@ from config.views import Gallery
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls', namespace='accounts')),
+    path('gallery/', include('gallery.urls', namespace='gallery')),
 
     path('', Main.as_view(),name='main'),
     path('todo/',Todo.as_view(),name='todo'),
