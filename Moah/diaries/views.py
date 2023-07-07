@@ -12,17 +12,18 @@ def diary_post_view(request):
     if request.method == 'GET':
         return render(request, 'Diary/Diary-Writing.html')
     else:
+        print("@@@@@@@@@",request.POST.get('secure'))
         Diary.objects.create(
             image = request.FILES.get('image'),
             content = request.POST.get('content'),
             writer = request.user,
-            feeling = request.POST.get('feeling'),
+            
             title = request.POST.get('title'),
             secure = request.POST.get('secure'),
         )
-        return redirect('diary-list')
+        return redirect('diaries:diary-list')
     
-def diary_list_view(request, id):
+def diary_list_view(request, id=None):
     print("@@@@@",id)
     if id == None:
         id = DateFormat(datetime.now()).format('m')

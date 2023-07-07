@@ -20,6 +20,8 @@ urlpatterns = [
     #path('diary/',Diary.as_view(),name='diary'),
     path('event/',Event.as_view(),name='event'),
     path('gallery/',Gallery.as_view(),name='gallery'),
+
+    path('summernote/', include('django_summernote.urls')),
     
     #path('', index, name='index'),
     #path('posts/', include('posts.urls', namespace='post')),
