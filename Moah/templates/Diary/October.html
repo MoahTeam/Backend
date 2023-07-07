@@ -1,0 +1,54 @@
+{% extends 'base.html'  %}
+{% load static %}
+{% block content %}
+
+    <section class="Date-list">
+        <div class="Date-list-num">
+            <div class="Date-list-circle" id="jan"><a href="{% url 'diaries:diary-list' 01%}">Jan</a></div>
+            <div class="Date-list-circle" id="feb"><a href="{% url 'diaries:diary-list' 02%}">Feb</a></div>
+            <div class="Date-list-circle" id="mar"><a href="{% url 'diaries:diary-list' 03%}">Mar</a></div>
+            <div class="Date-list-circle" id="apr"><a href="{% url 'diaries:diary-list' 04%}">Apr</a>
+            </div>
+            <div class="Date-list-circle" id="may"><a href="{% url 'diaries:diary-list' 05%}">May</a></div>
+            <div class="Date-list-circle" id="jun"><a href="{% url 'diaries:diary-list' 06%}">Jun</a></div>
+            <div class="Date-list-circle" id="jul"><a href="{% url 'diaries:diary-list' 07%}">Jul</a></div>
+            <div class="Date-list-circle" id="aug"><a href="{% url 'diaries:diary-list' 08%}">Aug</a></div>
+            <div class="Date-list-circle" id="sep"><a href="{% url 'diaries:diary-list' 09%}">Sep</a></div>
+            <div class="Date-list-circle" id="oct" style="background: var(--1, linear-gradient(80deg, #FF9F9F 0%, #FFBFBF 100%));
+            box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.15) inset;"><a href="{% url 'diaries:diary-list' 10%}">Oct</a></div>
+            <div class="Date-list-circle" id="nov"><a href="{% url 'diaries:diary-list' 11%}">Nov</a></div>
+            <div class="Date-list-circle" id="dec"><a href="{% url 'diaries:diary-list' 12%}">Dec</a></div>
+        </div>
+    </section>
+
+    <!-- 그리드 내용 -->
+    <div class="grid-container">
+        {% for page in page_obj %}
+        <div class="grid-item">
+            <p class="date-time">{{page.created_at|date:"Y.m/d"}}</p>
+            <p class="Writing">{{page.title}}</p>
+            <p class="emote">{{page.feeling}}</p>
+        </div>
+        <!-- 새글 작성 버튼 -->
+        {% if forloop.counter|divisibleby:3 %}
+    </div>
+    {% endif %}
+    {% if forloop.last %}
+    <div class="grid-item" onclick="nextWriting()">
+        <p class="date-time">2023/01/01</p>
+        <div style="text-align: center; margin-top: 4.31rem;">
+            <img src="{% static 'assets/writing-plus-button.svg' %}">
+            <p id="next-writing">글쓰기</p>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    <div class="btn-wrap">
+        {% if page_obj.has_previous %}
+        <a href="?page={{page_obj.previous_page_number}}" id="back-btn"><img src="{% static 'assets/Diary-backBtn.svg' %}"></a>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <a href="?page={{page_obj.next_page_number}}" id="next-btn"><img src="{% static 'assets/Diary-nextBtn.svg' %}"></a>
+        {% endif %}
+    </div>
+    {% endblock %}
