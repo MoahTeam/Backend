@@ -263,6 +263,7 @@
     display: flex;
     margin-left: 23.13rem;
     margin-top: 1.13rem;
+    padding-top: 2rem;
     width: 73.75rem;
     height: 24.9375rem;
     flex-shrink: 0;
@@ -271,6 +272,7 @@
     box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.15);
 }
 .TodoBox .toDoTaskList {
+    margin-left: 9.81rem;
     height: auto;
 }
 .TodoBox .toDoTaskList .taskList {
@@ -278,10 +280,12 @@
     flex-direction: row;
     flex-wrap: wrap;
     margin-right: 8rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
-#Todocheckbox {
+/* #Todocheckbox {
     margin-left: 9.81rem;
-}
+} */
 
 /* 메인페이지에서 간이 Diary */
 .DiaryBox {
