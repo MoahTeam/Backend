@@ -4,23 +4,43 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.utils.dateformat import DateFormat
 from django.core.paginator import Paginator, PageNotAnInteger
+# from diaries.forms import FormFromSomeModel as DetailForm
+from django.http import Http404, HttpResponse
 
-from .models import Diary
+from .models import Diary, DiaryImage
 
 @login_required
-def diary_post_view(request):
+def diary_post_view(request, id=None):
     if request.method == 'GET':
+        if id is not None:
+            diary = Diary.objects.get(id = id)
+            print(diary)
+            return render(request, 'Diary/Diary-Writing.html', {'diary' : diary})
         return render(request, 'Diary/Diary-Writing.html')
     else:
-        print("@@@@@@@@@",request.POST.get('secure'))
-        Diary.objects.create(
-            image = request.FILES.get('image'),
-            content = request.POST.get('content'),
-            writer = request.user,
+        if id is None:
+            diary = Diary.objects.create(
+                writer = request.user,
+                title = request.POST.get('title'),
+                secure = request.POST.get('secure'),
+                content = request.POST.get('content')
+            )
+            if request.FILES.get('image'):
+                DiaryImage.objects.create(
+                    diary = diary,
+                    image = request.FILES.get('image')
+                )
+        else:
+            diary = Diary.objects.get(id = id)
+            new_image = request.FILES.get('image')
+            content = request.POST.get('content')
+
+            if new_image:
+                diary.image.delete()
+                diary.image = new_image
             
-            title = request.POST.get('title'),
-            secure = request.POST.get('secure'),
-        )
+            diary.content = content
+            diary.save()
         return redirect('diaries:diary-list')
     
 def diary_list_view(request, id=None):

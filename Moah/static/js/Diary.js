@@ -14,36 +14,34 @@
 //   }
 // }
 
-
 //공개 비공개 토글 버튼
-function nextWriting(){
-  window.location="/Diary/Diary-Writing.html";
+function nextWriting() {
+  window.location = "/Diary/Diary-Writing.html";
 }
 
 function toggleVisibility(option) {
   var publicLabel = document.querySelector('label[for="public"]');
   var privateLabel = document.querySelector('label[for="private"]');
-  
-  if (option === 'public') {
-    publicLabel.style.color = '#434343';
-    privateLabel.style.color = '#848484';
-  } else if (option === 'private') {
-    publicLabel.style.color = '#848484';
-    privateLabel.style.color = '#434343';
+
+  if (option === "public") {
+    publicLabel.style.color = "#434343";
+    privateLabel.style.color = "#848484";
+  } else if (option === "private") {
+    publicLabel.style.color = "#848484";
+    privateLabel.style.color = "#434343";
   }
 }
-
 
 //textarea 자동 높이 조절
 const DEFAULT_HEIGHT = 250;
 
-const $textarea = document.querySelector('#content');
+const $textarea = document.querySelector("#content");
 
-$textarea.oninput=(event)=>{
-  const $target=event.target;
+$textarea.oninput = (event) => {
+  const $target = event.target;
 
-  $target.style.height=0;
-  $target.style.height=DEFAULT_HEIGHT+$target.scrollHeight + 'px';
+  $target.style.height = 0;
+  $target.style.height = DEFAULT_HEIGHT + $target.scrollHeight + "px";
 };
 
 function checkInput() {
@@ -52,10 +50,10 @@ function checkInput() {
   var saveBtnImg = document.querySelector("#savedBtn img");
 
   if (titleInput.value.trim() !== "") {
-      savedBtn.disabled = false;
-      saveBtnImg.src = "/image/Diary-saveBtn-hover.svg"; // 활성화 상태 이미지 소스
+    savedBtn.disabled = false;
+    saveBtnImg.src = "/image/Diary-saveBtn-hover.svg"; // 활성화 상태 이미지 소스
   } else {
-      savedBtn.disabled = true;
-      saveBtnImg.src = "/image/Diary-saveBtn.svg"; // 비활성화 상태 이미지 소스
+    savedBtn.disabled = true;
+    saveBtnImg.src = "/image/Diary-saveBtn.svg"; // 비활성화 상태 이미지 소스
   }
 }

@@ -51,7 +51,7 @@ def login_view(request):
 
         if user.check_password(password):
             auth.login(request, user)
-            return redirect('index')
+            return redirect('main')
         else:
             return render(request, 'Account/login.html')
         
