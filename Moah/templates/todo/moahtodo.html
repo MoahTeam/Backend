@@ -24,9 +24,9 @@
                 <input type="text" placeholder="" id="field">
                 {% comment %} <a href="{% url 'todo-new' %}">ㅇㄹㅇㄹ</a> {% endcomment %}
                 <a href="{% url 'djangocreate' %}">내용을 입력해주세요</a>
-                {% if post %}
+                {% comment %} {% if post %}
                     {{post.content}}
-                {% endif %}
+                {% endif %} {% endcomment %}
             </p>
             <button class="minusButton">
                 <img src="{% static 'assets/Group 170.svg' %}" alt="삭제 버튼" class="deleteButton">

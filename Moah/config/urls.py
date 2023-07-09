@@ -9,7 +9,7 @@ from config.views import Todo
 from config.views import Diary
 from config.views import Event
 from config.views import Gallery
-from todo.views import todo_create_view, todo_new_view, djangocreate
+from todo.views import todo_create_view, todo_new_view, djangocreate, moahtodo
 
 urlpatterns = [
     path('', Main.as_view(),name='main'),
@@ -23,7 +23,7 @@ urlpatterns = [
 
     path('todo/new/', todo_new_view, name='todo-new'),
     path('todo/create/', todo_create_view, name='todo-create'),
-    path('todo/moahtodo/', todo_create_view, name='moahtodo'),
+    path('todo/moahtodo/', moahtodo, name='moahtodo'),
     path('todo/djangocreate/', djangocreate, name='djangocreate'),
 
     path('diary/', include('diaries.urls', namespace='diaries')),

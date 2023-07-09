@@ -14,3 +14,4 @@ class Event(TemplateView):
     
 class Gallery(TemplateView):
     template_name ='Gallery/Gallery-Jul.html'
+

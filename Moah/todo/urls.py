@@ -1,6 +1,6 @@
 from django.urls import path
 
-from todo.views import todo_create_view, todo_list_view, todo_new_view, todo_save_view
+from todo.views import djangocreate, moahtodo, todo_create_view, todo_list_view, todo_new_view, todo_save_view
 app_name = 'todo'
 
 urlpatterns = [
@@ -10,4 +10,6 @@ urlpatterns = [
     # path('<int:id>/edit', todo_update_view, name="todo-update"),
     # path('<int:id>/delete', todo_delete_view, name="todo-delete"),
     # path('save/', todo_save_view, name='todo-save'),
+
+    
 ]

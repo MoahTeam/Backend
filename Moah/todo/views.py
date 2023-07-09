@@ -1,3 +1,4 @@
+from audioop import reverse
 from django.shortcuts import get_object_or_404, render, redirect
 
 from todo.forms import TodoBaseForm, TodoForm
@@ -50,12 +51,15 @@ def djangocreate(request):
             post.checkbox = form.cleaned_data['checkbox']
             post.todolist = form.cleaned_data['todolist']
             post.save() # model 객체
-            return redirect ('todo')
+            return redirect('moahtodo')
+            
         
     else:
         form = TodoForm()
     return render(request, 'todocreate.html', {'form':form})
 
+def moahtodo(request):
+    return render(request, 'todo/moahtodo.html')
 
 
 @login_required
