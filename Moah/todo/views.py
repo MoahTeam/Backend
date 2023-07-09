@@ -36,3 +36,14 @@ def todo_create_view(request):
             #writer = request.user
         )
         #return redirect('todo/moahtodo.html')
+
+def todo_save_view(request):
+    if request.method == 'POST':
+        form = TodoBaseForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('moahtodo.html')  # 저장 후 리디렉션할 URL (home은 해당 페이지의 이름입니다.)
+    else:
+        form = TodoBaseForm()
+    
+    return render(request, 'moahtodo.html', {'form': form})
