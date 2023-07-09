@@ -24,3 +24,30 @@ class Feb(TemplateView):
 
 class Mar(TemplateView):
     template_name ='Gallery/Gallery-Mar.html'
+
+class Apr(TemplateView):
+    template_name ='Gallery/Gallery-Apr.html'
+
+class May(TemplateView):
+    template_name ='Gallery/Gallery-May.html'
+
+class Jun(TemplateView):
+    template_name ='Gallery/Gallery-Jun.html'
+
+class Jul(TemplateView):
+    template_name ='Gallery/Gallery-Jul.html'
+
+class Aug(TemplateView):
+    template_name ='Gallery/Gallery-Aug.html'
+
+class Sep(TemplateView):
+    template_name ='Gallery/Gallery-Sep.html'
+
+class Oct(TemplateView):
+    template_name ='Gallery/Gallery-Oct.html'
+
+class Nov(TemplateView):
+    template_name ='Gallery/Gallery-Nov.html'
+
+class Dec(TemplateView):
+    template_name ='Gallery/Gallery-Dec.html'

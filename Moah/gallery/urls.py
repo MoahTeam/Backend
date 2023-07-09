@@ -5,7 +5,7 @@ from django.urls import path, include
 #from posts.views import index
 
 
-from gallery.views import Feb, Jan
+from gallery.views import  Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
 
 app_name = 'gallery'
 urlpatterns = [
@@ -14,16 +14,16 @@ urlpatterns = [
 
     path('jan/', Jan.as_view(), name='jan'),
     path('feb/', Feb.as_view(), name='feb'),
-    path('mar/', Feb.as_view(), name='mar'),
-    path('apr/', Feb.as_view(), name='apr'),
-    path('may/', Feb.as_view(), name='may'),
-    path('jun/', Feb.as_view(), name='jun'),
-    path('jul/', Feb.as_view(), name='jul'),
-    path('aug/', Feb.as_view(), name='aug'),
-    path('sep/', Feb.as_view(), name='sep'),
-    path('oct/', Feb.as_view(), name='oct'),
-    path('nov/', Feb.as_view(), name='nov'),
-    path('dec/', Feb.as_view(), name='dec'),
+    path('mar/', Mar.as_view(), name='mar'),
+    path('apr/', Apr.as_view(), name='apr'),
+    path('may/', May.as_view(), name='may'),
+    path('jun/', Jun.as_view(), name='jun'),
+    path('jul/', Jul.as_view(), name='jul'),
+    path('aug/', Aug.as_view(), name='aug'),
+    path('sep/', Sep.as_view(), name='sep'),
+    path('oct/', Oct.as_view(), name='oct'),
+    path('nov/', Nov.as_view(), name='nov'),
+    path('dec/', Dec.as_view(), name='dec'),
     
     #path('', index, name='index'),
     #path('posts/', include('posts.urls', namespace='post')),

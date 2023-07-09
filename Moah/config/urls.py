@@ -11,16 +11,19 @@ from config.views import Event
 from config.views import Gallery
 
 urlpatterns = [
+    path('', Main.as_view(),name='main'),
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('gallery/', include('gallery.urls', namespace='gallery')),
-
-    path('', Main.as_view(),name='main'),
+    path('gallery/',Gallery.as_view(),name='gallery'),
+    
     path('todo/',Todo.as_view(),name='todo'),
+    path('todo/',include('todo.urls', namespace='todo')),
+
     path('diary/', include('diaries.urls', namespace='diaries')),
     #path('diary/',Diary.as_view(),name='diary'),
     path('event/',Event.as_view(),name='event'),
-    path('gallery/',Gallery.as_view(),name='gallery'),
+
 
     path('summernote/', include('django_summernote.urls')),
     
