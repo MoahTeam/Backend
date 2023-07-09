@@ -29,7 +29,7 @@ def moahtodo(request):
 def todo_new_view(request) :
     return render(request, 'todo/moahtodonew.html')
 
-# 글 저장 함수
+# # 글 저장 함수
 def todo_create_view(request) :
     if(request.method == "POST"):
         post = Todo() # post 변수에 Todo 객체 생성
@@ -47,7 +47,7 @@ def djangocreate(request):
         # 유효한 데이터 타입이라면
         if form.is_valid():
             post = Todo()
-            # post.checkbox = form.cleaned_data['checkbox']
+            post.checkbox = form.cleaned_data['checkbox']
             post.todolist = form.cleaned_data['todolist']
             post.save() # model 객체
             return redirect ('todo')

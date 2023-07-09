@@ -7,7 +7,6 @@ class TodoBaseForm(forms.ModelForm):
         fields = "__all__"
 
 class TodoForm(forms.Form):
-    #checkbox = forms.BooleanField()
+    checkbox = forms.BooleanField(required=False)
     todolist = forms.CharField(widget=forms.Textarea)
-    #fields = ['checkbox', 'todolist']
 
