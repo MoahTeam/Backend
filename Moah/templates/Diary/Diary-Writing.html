@@ -95,12 +95,14 @@
   });
   $(document).ready(function () {
     $("#savedBtn").click(function () {
-      if (diary.id) {
+      if ("{{diary}}" != 'False') {
         for (let fi of array) {
           data = new FormData();
           data.append('image', fi);
+          let n = "{{diary.id}}";
+          alert(n)
           $.ajax({
-            url: "{% url 'diaries:diary-image' diary.id%}".replace('diary.id', diary.id),
+            url: `/diary/post/image/${n}`,
             data: data,
             cache: false,
             type: "POST",
@@ -117,7 +119,7 @@
           data = new FormData();
           data.append('image', fi);
           $.ajax({
-            url: "{% url 'diaries:diary-image'%}",
+            url: "{% url 'diaries:diary-image' %}",
             data: data,
             cache: false,
             type: "POST",

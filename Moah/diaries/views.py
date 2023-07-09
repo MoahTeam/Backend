@@ -16,7 +16,7 @@ def diary_post_view(request, id=None):
             diary = Diary.objects.get(id = id)
             print(diary)
             return render(request, 'Diary/Diary-Writing.html', {'diary' : diary})
-        return render(request, 'Diary/Diary-Writing.html')
+        return render(request, 'Diary/Diary-Writing.html', {'diary' : 'False'})
     else:
         if id is None:
             diary = Diary.objects.create(
@@ -32,31 +32,42 @@ def diary_post_view(request, id=None):
             #     )
         else:
             diary = Diary.objects.get(id = id)
-            new_image = request.FILES.get('image')
+            title = request.POST.get('title')
+            secure = request.POST.get('secure')
             content = request.POST.get('content')
-
-            if new_image:
-                diary.image.delete()
-                diary.image = new_image
             
             diary.content = content
+            diary.title = title
+            diary.secure = secure
             diary.save()
         return redirect('diaries:diary-list')
     
 def diary_post_image(request, id=None):
     if id is not None:
-        diary = Diary.objects.get(id = id)
-        print(DateFormat(diary.created_at).format('m'))
-        first_date = datetime.date(DateFormat(diary.created_at).format('Y'), DateFormat(diary.created_at).format('m'), DateFormat(diary.created_at).format('d'))
-        images = DiaryImage.objects.get(wirter=request.user, created_at__range=(first_date, first_date))
-        images.delete()
-    file = request.FILES['image']
-    DiaryImage.objects.create(
+        # diary = Diary.objects.get(id = id)
+        # print(DateFormat(diary.created_at).format('m'))
+        # first_date = datetime.date(DateFormat(diary.created_at).format('Y'), DateFormat(diary.created_at).format('m'), DateFormat(diary.created_at).format('d'))
+        # images = DiaryImage.objects.filter(wirter=request.user, created_at__range=(first_date, first_date))
+        # print(images)
+        # images.delete()
+        file = request.FILES['image']
+        try:
+            DiaryImage.objects.get(image = file)
+        except DiaryImage.DoesNotExist:
+            DiaryImage.objects.create(
                 writer = request.user,
                 image = file,
-    )
-    print("만듬")
-    return HttpResponse('success')
+            )
+        print("수정")
+        return HttpResponse('success')
+    else:
+        file = request.FILES['image']
+        DiaryImage.objects.create(
+            writer = request.user,
+            image = file,
+        )
+        print("만듬")
+        return HttpResponse('success')
     
 def diary_list_view(request, id=None):
     print("@@@@@",id)
