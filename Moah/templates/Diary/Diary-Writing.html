@@ -5,26 +5,8 @@
   integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-<!-- <script>
-  $.ajaxSetup({
-    headers: { "X-CSRFToken": '{{csrf_token}}' }
-  });
-  $(document).ready(function () {
-    $("#savedBtn").click(function () {
-      $.ajax({
-        url: "{% url 'diaries:diary-post' %}",
-        data: data,
-        cache: false,
-        type: "POST",
-        contentType: false,
-        processData: false,
-        enctype: 'multipart/form-data',
-        success: function (url) {
-        }
-      })
-    })
-  })
-</script> -->
+<script>
+</script>
 <section class="Date-list">
   <div class="Date-list-num">
     <div class="Date-list-circle" id="jan">Jan</div>
@@ -80,8 +62,11 @@
 
 <script src="/Diary/Diary.js"></script>
 <script src="/main/main.js"></script>
-<!-- <script>
-  const data = new Array();
+<script>
+  $.ajaxSetup({
+    headers: { "X-CSRFToken": '{{csrf_token}}' }
+  });
+  let array = new Array();
   $(function () {
     $('#content').summernote({
       height: 400, focus: true, width: "100%",
@@ -94,7 +79,7 @@
           const file = image[0];
           const reader = new FileReader();
           reader.readAsDataURL(file);
-          data.append(file);
+          array.push(image[0])
           reader.onloadend = function () {
             const image = $('<img>').attr('src', reader.result);
             image.attr('width', '50%');
@@ -104,11 +89,30 @@
         }
       }
     });
-
-    const markupStr = '{{form.content.value|safe|addslashes|default_if_none:""}}'
+    //const markupStr = '{{form.content.value|safe|addslashes|default_if_none:""}}'
+    const markupStr = '{{diary.content|safe|addslashes|default_if_none:""}}'
     $('#content').summernote('code', markupStr);
   });
-</script> -->
+  $(document).ready(function () {
+    $("#savedBtn").click(function () {
+      for (let fi of array) {
+        data = new FormData();
+        data.append('image', fi);
+        $.ajax({
+          url: "{% url 'diaries:diary-image' %}",
+          data: data,
+          cache: false,
+          type: "POST",
+          contentType: false,
+          processData: false,
+          success: function (url) {
+            console.log("성공")
+          }
+        })
+      }
+    })
+  })
+</script>
 </body>
 
 </html>

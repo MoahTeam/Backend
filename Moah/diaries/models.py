@@ -5,6 +5,9 @@ from django.db import models
 from django_summernote import models as summer_model
 from django_summernote import fields as summer_fields
 
+from datetime import datetime
+from django.utils.dateformat import DateFormat
+
 User = get_user_model()
 
 class Diary(models.Model):
@@ -26,6 +29,6 @@ class Diary(models.Model):
     secure = models.BooleanField(verbose_name="공개여부", null = False, default=True)
 
 class DiaryImage(models.Model):
-    diary = models.ForeignKey(Diary, on_delete=models.CASCADE)
-    image = models.ImageField(default='', upload_to="diary", blank=True, null=True)
+    writer = models.ForeignKey(to=User, on_delete=models.CASCADE, null=True, blank=True)
+    image = models.ImageField(default='', upload_to= "diary/"+datetime.now().strftime('%Y.%m.%d'), blank=True, null=True)
 

@@ -25,11 +25,11 @@ def diary_post_view(request, id=None):
                 secure = request.POST.get('secure'),
                 content = request.POST.get('content')
             )
-            if request.FILES.get('image'):
-                DiaryImage.objects.create(
-                    diary = diary,
-                    image = request.FILES.get('image')
-                )
+            # if request.FILES.get('image'):
+            #     DiaryImage.objects.create(
+            #         diary = diary,
+            #         image = request.FILES.get('image')
+            #     )
         else:
             diary = Diary.objects.get(id = id)
             new_image = request.FILES.get('image')
@@ -42,6 +42,15 @@ def diary_post_view(request, id=None):
             diary.content = content
             diary.save()
         return redirect('diaries:diary-list')
+    
+def diary_post_image(request):
+    file = request.FILES['image']
+    DiaryImage.objects.create(
+                writer = request.user,
+                image = file,
+    )
+    print("만듬")
+    return HttpResponse('success')
     
 def diary_list_view(request, id=None):
     print("@@@@@",id)
