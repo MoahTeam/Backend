@@ -15,24 +15,48 @@ class TodoBaseForm(forms.ModelForm):
         model = Todo
         fields = "__all__"
 
-from django.core.exceptions import ValidationError
-class TodoCreateForm(TodoBaseForm):
-    class Meta(TodoBaseForm.Meta):
-        fields = ['image', 'content']
 
-        def clean_content(self):
-            data = self.cleaned_data['content']
-            if "비속어" == data:
-                raise ValidationError("'비속어'는 사용하실 수 없습니다.")
 
-class TodoUpdateForm(TodoBaseForm):
-    class Meta(TodoBaseForm.Meta):
-        fields = ['image', 'content']
 
-class TodoDetailForm(TodoBaseForm):
-    def __init__(self, *args, **kwargs):
-        super(TodoDetailForm, self).__init__(*args, **kwargs)
-        for key in self.fields:
-            self.fields[key].widget.attrs['disabled'] = True
-    # class Meta(TodoBaseForm.Meta):
-    #     fields = ['image', 'content']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# from django.core.exceptions import ValidationError
+# class TodoCreateForm(TodoBaseForm):
+#     class Meta(TodoBaseForm.Meta):
+#         fields = ['image', 'content']
+
+#         def clean_content(self):
+#             data = self.cleaned_data['content']
+#             if "비속어" == data:
+#                 raise ValidationError("'비속어'는 사용하실 수 없습니다.")
+
+# class TodoUpdateForm(TodoBaseForm):
+#     class Meta(TodoBaseForm.Meta):
+#         fields = ['image', 'content']
+
+# class TodoDetailForm(TodoBaseForm):
+#     def __init__(self, *args, **kwargs):
+#         super(TodoDetailForm, self).__init__(*args, **kwargs)
+#         for key in self.fields:
+#             self.fields[key].widget.attrs['disabled'] = True
+#     # class Meta(TodoBaseForm.Meta):
+#     #     fields = ['image', 'content']
