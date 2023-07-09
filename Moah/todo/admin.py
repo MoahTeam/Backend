@@ -4,4 +4,5 @@ from .models import Todo
 
 @admin.register(Todo)
 class TodoModelAdmin(admin.ModelAdmin):
-    list_display = ('checkbox','todolist')
+    # list_display = ('checkbox','todolist')
+    list_display = ('todolist',)

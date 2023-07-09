@@ -1,0 +1,11 @@
+<!--투두 작성-->
+
+<form action="{% url 'todo-create' %}" method="POST">
+    <!--보안 문제 해결-->
+    {% csrf_token %}
+    <div>
+        <label for="body">내용</label>
+        <textarea name="body" id="body" cols="30" rows="10"></textarea>
+    </div>
+    <input type="submit" value="저장">
+</form>

@@ -1,6 +1,7 @@
 {% extends 'base.html'  %}
 {% load static %}
 {% block content %}
+
     <section>
         <div class="TodoTitle">
             <img src="{% static 'assets/Ellipse 67.svg' %}" alt="표시 점" class="titleImg">
@@ -13,13 +14,16 @@
         <div class="actionButton">
             <button class="createButton">
                 <img src="{% static 'assets/+.svg' %}" alt="추가 버튼" class="plusButton">
+                
             </button>
             <input class="saveButton" alt="저장 버튼"  value="         " type="submit"> <!--base.html에 style 태그로 사진 삽입-->
         </div>
         <div class="toDoList">
             <p class="checkList">
                 <input type="checkbox" id="select" onclick="toggleTask(this)">
-                <input type="text" placeholder="내용을 입력해주세요." id="field">
+                <input type="text" placeholder="" id="field">
+                {% comment %} <a href="{% url 'todo-new' %}">ㅇㄹㅇㄹ</a> {% endcomment %}
+                <a href="{% url 'djangocreate' %}">내용을 입력해주세요</a>
                 {% if post %}
                     {{post.content}}
                 {% endif %}
@@ -29,4 +33,5 @@
             </button>
         </div>
     </section>
-    {% endblock %}
+
+{% endblock %}

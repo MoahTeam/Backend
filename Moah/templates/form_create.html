@@ -1,0 +1,10 @@
+<!--투두 작성-->
+
+<form action="" method="POST">
+    <!--보안 문제 해결-->
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="저장">
+</form>
