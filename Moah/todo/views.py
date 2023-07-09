@@ -42,7 +42,7 @@ def todo_save_view(request):
         form = TodoBaseForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('moahtodo.html')  # 저장 후 리디렉션할 URL (home은 해당 페이지의 이름입니다.)
+            return redirect('todo_save')  # 저장 후 redirect할 URL (todo는 해당 페이지의 이름입니다.)
     else:
         form = TodoBaseForm()
     
