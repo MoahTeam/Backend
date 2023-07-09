@@ -43,7 +43,13 @@ def diary_post_view(request, id=None):
             diary.save()
         return redirect('diaries:diary-list')
     
-def diary_post_image(request):
+def diary_post_image(request, id=None):
+    if id is not None:
+        diary = Diary.objects.get(id = id)
+        print(DateFormat(diary.created_at).format('m'))
+        first_date = datetime.date(DateFormat(diary.created_at).format('Y'), DateFormat(diary.created_at).format('m'), DateFormat(diary.created_at).format('d'))
+        images = DiaryImage.objects.get(wirter=request.user, created_at__range=(first_date, first_date))
+        images.delete()
     file = request.FILES['image']
     DiaryImage.objects.create(
                 writer = request.user,

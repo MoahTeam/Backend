@@ -95,20 +95,39 @@
   });
   $(document).ready(function () {
     $("#savedBtn").click(function () {
-      for (let fi of array) {
-        data = new FormData();
-        data.append('image', fi);
-        $.ajax({
-          url: "{% url 'diaries:diary-image' %}",
-          data: data,
-          cache: false,
-          type: "POST",
-          contentType: false,
-          processData: false,
-          success: function (url) {
-            console.log("성공")
-          }
-        })
+      if (diary.id) {
+        for (let fi of array) {
+          data = new FormData();
+          data.append('image', fi);
+          $.ajax({
+            url: "{% url 'diaries:diary-image' diary.id%}".replace('diary.id', diary.id),
+            data: data,
+            cache: false,
+            type: "POST",
+            contentType: false,
+            processData: false,
+            success: function (url) {
+              console.log("성공")
+            }
+          })
+        }
+      }
+      else {
+        for (let fi of array) {
+          data = new FormData();
+          data.append('image', fi);
+          $.ajax({
+            url: "{% url 'diaries:diary-image'%}",
+            data: data,
+            cache: false,
+            type: "POST",
+            contentType: false,
+            processData: false,
+            success: function (url) {
+              console.log("성공")
+            }
+          })
+        }
       }
     })
   })
