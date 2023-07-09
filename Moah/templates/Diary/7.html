@@ -45,7 +45,8 @@
     </a>
     {% endif %}
     <!-- 새글 작성 버튼 -->
-    {% if forloop.last %}
+    {% endfor %}
+    {% if not page_obj.has_next %}
     <a href="{% url 'diaries:diary-post'%}">
         <div class="grid-item">
             <p class="date-time">2023/01/01</p>
@@ -56,7 +57,6 @@
         </div>
     </a>
     {% endif %}
-    {% endfor %}
 </div>
 <div class="btn-wrap">
     {% if page_obj.has_previous %}
