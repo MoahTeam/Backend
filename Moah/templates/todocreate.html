@@ -1,6 +1,8 @@
 <!--투두 작성-->
+{% comment %} {% for todo in todo_list %} {% endcomment %}
 
-<form action="" method="POST">
+
+<form action="{% url 'djangocreate' %}" method="POST" enctype="multipart/form-data">
     <!--보안 문제 해결-->
     {% csrf_token %}
     <table>
@@ -8,3 +10,4 @@
     </table>
     <input type="submit" value="저장">
 </form>
+{% comment %} {% endfor %} {% endcomment %}

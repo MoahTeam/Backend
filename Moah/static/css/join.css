@@ -65,8 +65,6 @@ form{
     width: 37.5625rem;
     height: 3.5rem;
     flex-shrink: 0;
-    border-radius: 1.25rem;
-    border: 2px solid var(--5, #CECECE);
 }
 
 input{
@@ -76,6 +74,12 @@ input{
     font-style: normal;
     font-weight: 300;
     line-height: normal;
+    border-radius: 1.25rem;
+    border: 2px solid var(--5, #CECECE);
+}
+
+input:focus{
+    outline: none;
 }
 
 input::placeholder {
@@ -136,4 +140,17 @@ a{
     cursor: pointer;
     right: 1.5rem;
     top: -3.2rem;
+}
+
+/* 유효성검사(비밀번호 일치 불일치) */
+.pwd_alert {
+    color: #FF3F3F;
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-top: 0.5rem;
+    margin-left: 0.8rem;
+    position: absolute;
 }
