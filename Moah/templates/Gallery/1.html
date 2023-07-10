@@ -29,9 +29,15 @@
         <!-- 선택된 날짜 나오는 부분 -->
         <div id="selected-date"></div>
     </div>
-    <div>
+    <div class="images=containers" style="display: flex; align-items: center; justify-content: center;">
         <!-- 선택된 날짜의 사진 요소 나오는 부분 -->
-        <div id="image-container"></div>
+        <div class="image-containers" id="image-container" style="display: flex; align-items: center; justify-content: center; margin-bottom: 5rem;">
+            {% for image in image_array %}
+            <img src="{{image.image.url}}" style="border-radius: 0.625rem; width: 25rem;
+            height: 28rem;">
+            <br>
+            {% endfor %}
+        </div>
     </div>
 
     <script>

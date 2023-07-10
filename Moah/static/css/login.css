@@ -137,6 +137,7 @@ a{
     line-height: normal;
     margin-left: 0.8rem;
     position: absolute;
+    width: 37.5625rem;
 }
 
 input:focus{
