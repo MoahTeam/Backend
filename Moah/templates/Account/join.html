@@ -27,17 +27,19 @@
             <div style="margin-bottom: 1.5rem;">
                 <label for="passwordField" class="password-label">
                     <input type="password" name="password" id="passwordField" class="input-form"
-                        placeholder="  비밀번호를 입력해주세요">
+                        placeholder="  비밀번호를 입력해주세요" required>
                     <img src="/image/pwd-toggle-show.svg" class="toggle-image1" onclick="togglePasswordVisibility()">
                 </label>
             </div>
             <div style="margin-bottom: 2rem;">
                 <label for="passwordCkField" class="password-label">
                     <input type="password" name="passwordCk" id="passwordCkField" class="input-form"
-                        placeholder="  비밀번호를 다시 입력해주세요">
+                        placeholder="  비밀번호를 다시 입력해주세요" required>
                     <img src="/image/pwd-toggle-show.svg" class="toggle-image2"
                         onclick="togglePasswordCheckVisibility()">
                 </label>
+                <div class="pwd_alert" id="alert-success"></div>
+                <div class="pwd_alert" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
             </div>
             <div>
                 <button type="submit" id=login_submitbtn onclick="handleLogin()">회원가입 하기</button>
@@ -51,7 +53,9 @@
         </div>
     </section>
 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="/Account/account.js"></script>
+    <script src="/Account/check.js"></script>
 </body>
 
 </html>
