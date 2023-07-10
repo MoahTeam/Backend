@@ -47,20 +47,23 @@ def login_view(request):
     else:
         email = request.POST.get('email')
         password = request.POST.get('password')
-        if email == "":
-            return render(request, 'Account/login.html', {'error' : 'email'})
+        if email == "" or email == None:
+            print("이메일 비었음")
+            return render(request, 'Account/login.html', {'error' : 'email', 'password': password})
         try:
             user = User.objects.get(email=email)
         except User.DoesNotExist:
             return render(request, 'Account/login.html', {'error': 'error'})
-        except User.ValueError:
-            return render(request, 'Account/login.html')
+        # except User.ValueError:
+        #     return render(request, 'Account/login.html', {'error': 'email', 'password': password})
 
+        if password == "" or password == None:
+            return render(request, 'Account/login.html', {'error' : 'password', 'email':email})
         if user.check_password(password):
             auth.login(request, user)
             return redirect('main')
         else:
-            return render(request, 'Account/login.html', {'error' : 'password'})
+            return render(request, 'Account/login.html', {'error' : 'password', 'email':email})
         
 def find(request):
     #make_random_password(length=10, allowed_chars='abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789')
