@@ -1,53 +1,29 @@
-from django.views.generic import TemplateView
+from datetime import datetime
+from django.utils.dateformat import DateFormat
+from django.shortcuts import render
 
-# class Main(TemplateView):
-#     template_name ='main.html'
-    
-# class Todo(TemplateView):
-#     template_name ='todo/moahtodo.html'
-    
-# class Diary(TemplateView):
-#     template_name ='Diary/diary.html'
-    
-# class Event(TemplateView):
-#     template_name ='event.html'
-    
-# class Gallery(TemplateView):
-#     template_name ='Gallery/Gallery-Jul.html'
+from diaries.models import DiaryImage
 
-##########################################
-class Jan(TemplateView):
-    template_name ='Gallery/Gallery-Jan.html'
+def gallery_view(request, month=None, day=None):
+    if month == None:
+        month = DateFormat(datetime.now()).format('m')
+    if day == None:
+        day = DateFormat(datetime.now()).format('d')
+    if request.method == 'GET':
+        array = []
+        image_array = []
+        for i in range(1,32):
+            print("dkfjlsfk")
+            image_count = DiaryImage.objects.filter(created_at__month=month, created_at__day = i).count()
+            array.append(image_count)
+        print(array)
+        try:
+            images = DiaryImage.objects.filter(created_at__month=month, created_at__day = day)
+        except DiaryImage.DoesNotExist:
+            images = []
+        for image in images:
+            image_array.append(image)
+        print(image_array)
+    return render(request, 'gallery/' + str(month).lstrip("0") + '.html', {'image_count': array, 'image_array' : image_array })
 
-class Feb(TemplateView):
-    template_name ='Gallery/Gallery-Feb.html'
-
-class Mar(TemplateView):
-    template_name ='Gallery/Gallery-Mar.html'
-
-class Apr(TemplateView):
-    template_name ='Gallery/Gallery-Apr.html'
-
-class May(TemplateView):
-    template_name ='Gallery/Gallery-May.html'
-
-class Jun(TemplateView):
-    template_name ='Gallery/Gallery-Jun.html'
-
-class Jul(TemplateView):
-    template_name ='Gallery/Gallery-Jul.html'
-
-class Aug(TemplateView):
-    template_name ='Gallery/Gallery-Aug.html'
-
-class Sep(TemplateView):
-    template_name ='Gallery/Gallery-Sep.html'
-
-class Oct(TemplateView):
-    template_name ='Gallery/Gallery-Oct.html'
-
-class Nov(TemplateView):
-    template_name ='Gallery/Gallery-Nov.html'
-
-class Dec(TemplateView):
-    template_name ='Gallery/Gallery-Dec.html'
+#calendarDay.innerText = "{% if image_count %}영ㅅ{% endif %}";

@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="Date-list">
+    <div class="Date-list-num">
+        <div class="Date-list-circle" id="jan"><a href="{% url 'gallery:gallery-list' month=01%}">Jan</a></div>
+        <div class="Date-list-circle" id="feb"><a href="{% url 'gallery:gallery-list' month=02%}">Feb</a></div>
+        <div class="Date-list-circle" id="mar"><a href="{% url 'gallery:gallery-list' month=03%}">Mar</a></div>
+        <div class="Date-list-circle" id="apr"><a href="{% url 'gallery:gallery-list' month=04%}">Apr</a></div>
+        <div class="Date-list-circle" id="may"><a href="{% url 'gallery:gallery-list' month=05%}">May</a></div>
+        <div class="Date-list-circle" id="jun"><a href="{% url 'gallery:gallery-list' month=06%}">Jun</a></div>
+        <div class="Date-list-circle" id="jul" style="background: var(--1, linear-gradient(180deg, #FF9F9F 0%, #FFBFBF 100%));
+        box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.15) inset;"><a
+                href="{% url 'gallery:gallery-list' month=07%}">Jul</a></div>
+        <div class="Date-list-circle" id="aug"><a href="{% url 'gallery:gallery-list' month=08%}">Aug</a></div>
+        <div class="Date-list-circle" id="sep"><a href="{% url 'gallery:gallery-list' month=09%}">Sep</a></div>
+        <div class="Date-list-circle" id="oct"><a href="{% url 'gallery:gallery-list' month=10%}">Oct</a></div>
+        <div class="Date-list-circle" id="nov"><a href="{% url 'gallery:gallery-list' month=11%}">Nov</a></div>
+        <div class="Date-list-circle" id="dec"><a href="{% url 'gallery:gallery-list' month=12%}">Dec</a></div>
+    </div>
+</section>
+<div>
+    <div id="calendar-date">Jul</div>
+    <div id="calendar-cantainer-day"></div>
+    <div id="calendar-container"></div>
+</div>
+<div>
+    <!-- 선택된 날짜 나오는 부분 -->
+    <div id="selected-date"></div>
+</div>
+<div>
+    <!-- 선택된 날짜의 사진 요소 나오는 부분 -->
+    <div id="image-container"></div>
+</div>
+
+<script>
+    // 2023년 7월의 달력 객체 생성 함수
+    function createJuly2023Calendar() {
+        var calendarContainer = document.getElementById("calendar-container");
+        var calendar = document.createElement("div");
+        calendar.className = "calendar";
+
+        // 2023년 7월 1일의 요일을 계산
+        var julyFirstDay = new Date(2023, 6, 1).getDay();
+
+        // 전체 요일을 저장하는 배열
+        var weekdays = ["일", "월", "화", "수", "목", "금", "토"];
+
+        // 요일 헤더 추가
+        for (var i = 0; i < weekdays.length; i++) {
+            var calendarDay = document.createElement("div");
+            calendarDay.className = "calendar-day";
+            if (i === 0) {
+                calendarDay.className += " Sun"; // 주말에 대한 클래스 추가
+            } else if (i === 6) {
+                calendarDay.className += " Satur";
+            } else {
+                calendarDay.className += " week";
+            }
+            calendarDay.textContent = weekdays[i];
+            calendar.appendChild(calendarDay);
+        }
+
+        // 7월의 일수를 계산
+        var daysInJuly = new Date(2023, 7, 0).getDate();
+
+        // 빈 공백 요소 추가
+        for (var i = 0; i < julyFirstDay; i++) {
+            var calendarDay = document.createElement("div");
+            calendarDay.className = "calendar-day";
+            calendar.appendChild(calendarDay);
+        }
+
+        // 날짜 요소 추가
+        for (var day = 1; day <= daysInJuly; day++) {
+            var calendarDay = document.createElement("div");
+            calendarDay.className = "calendar-day";
+            if (day === 2 || day === 9 || day === 16 || day === 23 || day === 30) {
+                calendarDay.className += " holiday"; // 공휴일에 대한 클래스 추가
+            }
+            calendarDay.textContent = day;
+            calendarDay.addEventListener("click", function () {
+                handleDateClick(this.textContent);
+            });
+
+            calendar.appendChild(calendarDay);
+        }
+
+        calendarContainer.appendChild(calendar);
+    }
+
+    // 날짜 클릭 이벤트 핸들러
+    function handleDateClick(day) {
+        var selectedDateElement = document.getElementById("selected-date");
+        var selectedDate = new Date(2023, 6, day);
+        var year = selectedDate.getFullYear();
+        var month = selectedDate.getMonth() + 1;
+        var date = selectedDate.getDate();
+
+        // 선택된 날짜 정보 업데이트
+        selectedDateElement.textContent = "July / " + year + ". " + month + ". " + date;
+
+        // 이미지를 가져오고 표시하는 로직 추가
+        for (let image of image_array) {
+            var imageContainer = document.getElementById("image-container");
+            // 예시로 날짜와 일치하는 이미지 URL을 가져옵니다.
+            var imageURL = " ".reaplce(" ", image.image.url);
+            // 이미지 요소 생성
+            var imageElement = document.createElement("img");
+            imageElement.src = imageURL;
+            // 이미지를 표시할 요소에 추가
+            imageContainer.innerHTML = ""; // 이전 이미지 제거
+            imageContainer.appendChild(imageElement);
+        }
+    }
+
+
+    // 2023년 7월 달력 생성 함수 호출
+    createJuly2023Calendar();
+</script>
+
+{% endblock %}
