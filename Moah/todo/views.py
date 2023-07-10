@@ -1,5 +1,6 @@
 from audioop import reverse
 from django.shortcuts import get_object_or_404, render, redirect
+from django.urls import reverse
 
 from todo.forms import TodoBaseForm, TodoForm
 
@@ -51,16 +52,31 @@ def djangocreate(request):
             post.checkbox = form.cleaned_data['checkbox']
             post.todolist = form.cleaned_data['todolist']
             post.save() # model 객체
-            return redirect('moahtodo')
-            
-        
+            #return redirect('moahtodo')    
+            return redirect(reverse('moahtodo'))    
+            #return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
     else:
         form = TodoForm()
     return render(request, 'todocreate.html', {'form':form})
 
 def moahtodo(request):
-    return render(request, 'todo/moahtodo.html')
+    todo_list = Todo.objects.all()
+    return render(request, 'todo/moahtodo.html', {'todo_list' : todo_list})
 
+# def moahtodo(request):
+#     todo_list = Todo.objects.all()
+#     context ={
+#         'todo_list': todo_list
+#     }
+#     return render(request, 'todo/moahtodo.html', context)
+
+def todo_list_view(request):
+    #post_list = Post.objects.all()
+    todo_list = Todo.objects.filter(writer = request.user)
+    context = {
+        'todo_list': todo_list
+    }
+    return render(request, 'todo/todo_list.html', context)
 
 @login_required
 # def todo_create_view(request):
