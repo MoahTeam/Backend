@@ -27,11 +27,16 @@
 </div>
 <div>
     <!-- 선택된 날짜 나오는 부분 -->
-    <div id="selected-date"></div>
+    <div id="selected-date">2023.{{month}}.{{day}}</div>
 </div>
 <div>
     <!-- 선택된 날짜의 사진 요소 나오는 부분 -->
-    <div id="image-container"></div>
+    <div id="image-container">
+        {% for image in image_array %}
+        <img src="{{image.image.url}}">
+        <br>
+        {% endfor %}
+    </div>
 </div>
 
 <script>
@@ -73,6 +78,7 @@
         }
 
         // 날짜 요소 추가
+        var countArray = "{{image_count}}";
         for (var day = 1; day <= daysInJuly; day++) {
             var calendarDay = document.createElement("div");
             calendarDay.className = "calendar-day";
@@ -81,10 +87,15 @@
             }
             calendarDay.textContent = day;
             calendarDay.addEventListener("click", function () {
-                handleDateClick(this.textContent);
+                location.href = `/gallery/7/${this.textContent.slice(0, -1)}`;
+                //handleDateClick(this.textContent);
             });
 
             calendar.appendChild(calendarDay);
+
+            var count = document.createElement("div");
+            count.innerText = `${countArray[day]}`;
+            calendarDay.appendChild(count);
         }
 
         calendarContainer.appendChild(calendar);
@@ -102,15 +113,16 @@
         selectedDateElement.textContent = "July / " + year + ". " + month + ". " + date;
 
         // 이미지를 가져오고 표시하는 로직 추가
+        var image_array = "{{image_array}}";
         for (let image of image_array) {
             var imageContainer = document.getElementById("image-container");
             // 예시로 날짜와 일치하는 이미지 URL을 가져옵니다.
-            var imageURL = " ".reaplce(" ", image.image.url);
+            var imageURL = "{{image.image.url}}";
             // 이미지 요소 생성
             var imageElement = document.createElement("img");
             imageElement.src = imageURL;
             // 이미지를 표시할 요소에 추가
-            imageContainer.innerHTML = ""; // 이전 이미지 제거
+            //imageContainer.innerHTML = ""; // 이전 이미지 제거
             imageContainer.appendChild(imageElement);
         }
     }

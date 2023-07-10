@@ -1,6 +1,8 @@
 from audioop import reverse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
+from datetime import datetime
+from django.utils.dateformat import DateFormat
 
 from todo.forms import TodoBaseForm, TodoForm
 
@@ -18,7 +20,9 @@ def index(request):
 # Create your views here.
 def todo_list_view(request):
     #todo_list = Todo.objects.all()
-    todo_list = Todo.objects.filter(writer = request.user)
+    day = DateFormat(datetime.now()).format('d')
+    month = DateFormat(datetime.now()).format('m')
+    todo_list = Todo.objects.filter(writer = request.user, created_at__month=month, created_at__day = day)
     context = {
         'todo_list': todo_list
     }
