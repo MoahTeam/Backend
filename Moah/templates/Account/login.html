@@ -23,14 +23,27 @@
         <form class="form_wrap_line" method="POST">
             {% csrf_token %}
             <div style="margin-bottom: 1.5rem;">
+                {% if error == 'email' %}
+                <input type="text" class="input-form" id="id" placeholder="  이메일을 입력해주세요" name="user-name" style="border: 2px solid #FF3F3F;">
+                <div class="login_alert" id="alert-danger">아이디를 확인해주세요</div>
+                {% else %}
                 <input type="text" class="input-form" name="email" id="id" placeholder="  이메일을 입력해주세요">
+                {% endif %}
             </div>
             <div style="margin-bottom: 2rem;">
                 <label for="passwordField" class="password-label">
+                    {% if error == 'password' %}
+                    <input type="password" name="password" id="passwordField" class="input-form"
+                        placeholder="  비밀번호를 입력해주세요" style="border: 2px solid #FF3F3F;">
+                    <img src="{% static 'assets/pwd-toggle-show.svg' %}" class="toggle-image1"
+                        onclick="togglePasswordVisibility()">
+                    <div class="login_alert" id="alert-danger">비밀번호를 확인해주세요</div>
+                    {% else %}
                     <input type="password" name="password" id="passwordField" class="input-form"
                         placeholder="  비밀번호를 입력해주세요">
                     <img src="{% static 'assets/pwd-toggle-show.svg' %}" class="toggle-image1"
-                        onclick="togglePasswordVisibility()">
+                    onclick="togglePasswordVisibility()">
+                    {% endif %}
                 </label>
             </div>
             <div>
