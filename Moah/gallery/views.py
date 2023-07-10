@@ -1,9 +1,10 @@
 from datetime import datetime
 from django.utils.dateformat import DateFormat
 from django.shortcuts import render
-
+from django.contrib.auth.decorators import login_required
 from diaries.models import DiaryImage
 
+@login_required
 def gallery_view(request, month=None, day=None):
     if month == None:
         month = DateFormat(datetime.now()).format('m')

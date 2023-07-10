@@ -15,7 +15,7 @@ def signup_view(request):
     #aaaa@aaaa.aaa
     p = re.compile('^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$')
     if request.method == 'POST':
-        username = "hey"
+        username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
         passwordCk = request.POST.get('passwordCk')
@@ -30,7 +30,7 @@ def signup_view(request):
                 email=email,
                 password=password
             )
-            except IntegrityError:
+            except User.IntegrityError:
                 pass
             
             auth.login(request, user)
@@ -72,6 +72,6 @@ def find(request):
 def logout_view(request):
     if request.user.is_authenticated:
         logout(request)
-    return redirect('index')
+    return redirect('main')
 
 

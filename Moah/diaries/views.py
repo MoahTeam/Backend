@@ -41,7 +41,8 @@ def diary_post_view(request, id=None):
             diary.secure = secure
             diary.save()
         return redirect('diaries:diary-list')
-    
+
+@login_required
 def diary_post_image(request, id=None):
     if id is not None:
         file = request.FILES['image']
@@ -64,13 +65,15 @@ def diary_post_image(request, id=None):
         print("생성")
     return HttpResponse('success')
 
+@login_required
 def diary_delete_image(request, id):
     file = request.POST.get('file')
     diary = Diary.objects.get(id = id)
     print("@@@@@@@", file)
     
     return HttpResponse('success')
-    
+
+@login_required  
 def diary_list_view(request, id=None):
     print("@@@@@",id)
     if id == None:
