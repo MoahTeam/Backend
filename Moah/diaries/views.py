@@ -44,30 +44,32 @@ def diary_post_view(request, id=None):
     
 def diary_post_image(request, id=None):
     if id is not None:
-        # diary = Diary.objects.get(id = id)
-        # print(DateFormat(diary.created_at).format('m'))
-        # first_date = datetime.date(DateFormat(diary.created_at).format('Y'), DateFormat(diary.created_at).format('m'), DateFormat(diary.created_at).format('d'))
-        # images = DiaryImage.objects.filter(wirter=request.user, created_at__range=(first_date, first_date))
-        # print(images)
-        # images.delete()
         file = request.FILES['image']
+        diary = Diary.objects.get(id = id)
         try:
-            DiaryImage.objects.get(image = file)
+            DiaryImage.objects.get(image = file, writer = request.user)
         except DiaryImage.DoesNotExist:
             DiaryImage.objects.create(
                 writer = request.user,
                 image = file,
+                created_at = diary.created_at,
             )
         print("수정")
-        return HttpResponse('success')
     else:
         file = request.FILES['image']
         DiaryImage.objects.create(
             writer = request.user,
             image = file,
         )
-        print("만듬")
-        return HttpResponse('success')
+        print("생성")
+    return HttpResponse('success')
+
+def diary_delete_image(request, id):
+    file = request.POST.get('file')
+    diary = Diary.objects.get(id = id)
+    print("@@@@@@@", file)
+    
+    return HttpResponse('success')
     
 def diary_list_view(request, id=None):
     print("@@@@@",id)

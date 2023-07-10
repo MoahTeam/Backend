@@ -34,7 +34,7 @@
   <div class="text-content-Wrap">
     <div id="textArea-wrap">
       <div id="title-wrap">
-        {% if diary.title %}
+        {% if diary != 'False' %}
         <input type="text" id="title" value="{{diary.title}}" name="title" oninput="checkInput()">
         {% else %}
         <input type="text" id="title" placeholder="제목을 입력하세요" name="title" oninput="checkInput()">
@@ -79,14 +79,35 @@
           const file = image[0];
           const reader = new FileReader();
           reader.readAsDataURL(file);
-          array.push(image[0])
+          array.push(image[0]);
           reader.onloadend = function () {
             const image = $('<img>').attr('src', reader.result);
             image.attr('width', '50%');
             $('#content').summernote("insertNode", image[0]);
           }
           reader.readAsDataURL(file);
-        }
+        },
+        onMediaDelete: function ($target, editor, $editable) {
+          if (("{{diary}}" != 'False') && confirm('이미지를 삭제 하시겠습니까?')) {
+            var deletedImageUrl = $target
+              .attr('src')
+              .split('/')
+              .pop()
+
+            // ajax 함수 호출
+            data = new FormData()
+            data.append('file', deletedImageUrl)
+            let n = "{{diary.id}}";
+            $.ajax({
+              data: data,
+              type: 'POST',
+              url: `/diary/delete/image/${n}`,
+              contentType: false,
+              enctype: 'multipart/form-data',
+              processData: false,
+            })
+          }
+        },
       }
     });
     //const markupStr = '{{form.content.value|safe|addslashes|default_if_none:""}}'
