@@ -21,14 +21,16 @@
         <div class="toDoList">
             <p class="checkList">
                 <input type="checkbox" id="select" onclick="toggleTask(this)">
-                <input type="text" placeholder="내용을 입력해주세요." id="field">
-                {% comment %} <a href="{% url 'todo-new' %}">ㅇㄹㅇㄹ</a> {% endcomment %}
+                {% for todo in todo_list %}
+                    <input type="text" placeholder="내용을 입력해주세요." id="field" value="{{ todo.todolist }}">
                 
-                <a href="{% url 'djangocreate' %}"><img src="{% static 'assets/+.svg' %}"></a>&nbsp;&nbsp;&nbsp;
-                {% for todo in todo_list %}<br>
+                    <br>{% endfor %}
                     
+                {% comment %} <a href="{% url 'djangocreate' %}"><img src="{% static 'assets/+.svg' %}"></a>&nbsp;&nbsp;&nbsp; {% endcomment %}
+                <a href="{% url 'djangocreate' %}">내용을 입력하세요</a>&nbsp;&nbsp;&nbsp;
+                {% comment %} {% for todo in todo_list %}<br>
                     {{ todo.todolist }}<br>
-                {% endfor %}
+                {% endfor %} {% endcomment %}
                 
                 
             </p>
