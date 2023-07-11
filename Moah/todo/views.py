@@ -67,6 +67,42 @@ def moahtodo(request):
     todo_list = Todo.objects.all()
     return render(request, 'todo/moahtodo.html', {'todo_list' : todo_list})
 
+def maincreate(request):
+    if request.method == 'POST':
+        form = TodoForm(request.POST)
+        # 유효한 데이터 타입이라면
+        if form.is_valid():
+            post = Todo()
+            post.checkbox = form.cleaned_data['checkbox']
+            post.todolist = form.cleaned_data['todolist']
+            post.save() # model 객체
+            #return redirect('moahtodo')    
+            return redirect(reverse('main'))    
+            #return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+    else:
+        form = TodoForm()
+    return render(request, 'main.html', {'form':form})
+
+def main(request):
+    todo_list = Todo.objects.all()
+    return render(request, 'main.html', {'todo_list' : todo_list})
+
+# def maincreate(request):
+#     if request.method == 'POST':
+#         form = TodoForm(request.POST)
+#         # 유효한 데이터 타입이라면
+#         if form.is_valid():
+#             post = Todo()
+#             post.checkbox = form.cleaned_data['checkbox']
+#             post.todolist = form.cleaned_data['todolist']
+#             post.save() # model 객체
+#             #return redirect('moahtodo')    
+#             return redirect(reverse('main'))    
+#             #return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+#     else:
+#         form = TodoForm()
+#     return render(request, 'main.html', {'form':form})
+
 # def moahtodo(request):
 #     todo_list = Todo.objects.all()
 #     context ={

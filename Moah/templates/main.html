@@ -1,6 +1,7 @@
 {% extends 'base.html'  %}
 {% load static %}
 {% block content %}
+
   <!-- 프로필 -->
   <section>
     <div class="profile">
@@ -44,17 +45,20 @@
     <div class="littleMenuBox" id="AllBoxId">
       <div class="AllBox">
         <ul class="taskList">
+          {% for todo in todo_list %}
           <li onclick="toggleTask(this)">
             <input type="checkbox">
-            <span>Task 1</span>
+            <span value="TASK">{{ todo.todolist }}</span>
           </li>
+          {% endfor %}
+          {% comment %}           
           <li onclick="toggleTask(this)">
             <input type="checkbox">
             <span>Task 2</span>
           </li>
           <li onclick="toggleTask(this)">
             <input type="checkbox">
-            <span>Task 3</span>
+            <span>Task 3</span> {% endcomment %}
         </ul>
       </div>
       <div class="ImgBox">
@@ -70,9 +74,15 @@
     <div class="TodoBox" id="TodoBoxId">
       <div class="toDoTaskList">
         <ul class="taskList">
+          {% for todo in todo_list %}
           <li onclick="toggleTask(this)">
-            <input type="checkbox" id="Todocheckbox">
-            <span>Task 1</span>
+            <input type="checkbox" id="Todocheckbox">  
+            <span>{{ todo.todolist }}</span>
+          </li>
+          {% endfor %}
+          {% comment %} <li onclick="toggleTask(this)">
+            <input type="checkbox">
+            <span>Task </span>
           </li>
           <li onclick="toggleTask(this)">
             <input type="checkbox">
@@ -101,11 +111,7 @@
           <li onclick="toggleTask(this)">
             <input type="checkbox">
             <span>Task 1</span>
-          </li>
-          <li onclick="toggleTask(this)">
-            <input type="checkbox">
-            <span>Task 1</span>
-          </li>
+          </li> {% endcomment %}
         </ul>
       </div>
     </div>

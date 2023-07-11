@@ -9,10 +9,11 @@ from config.views import Todo
 from config.views import Diary
 from config.views import Event
 from config.views import Gallery
-from todo.views import todo_create_view, todo_new_view, djangocreate, moahtodo
+from todo.views import todo_create_view, todo_new_view, djangocreate, moahtodo, main
 
 urlpatterns = [
     path('', Main.as_view(),name='main'),
+    path('main/', main, name='main'),
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('gallery/', include('gallery.urls', namespace='gallery')),

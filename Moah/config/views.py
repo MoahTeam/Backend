@@ -1,5 +1,7 @@
 from django.views.generic import TemplateView
 
+from todo.forms import TodoForm
+
 class Main(TemplateView):
     template_name ='main.html'
     
