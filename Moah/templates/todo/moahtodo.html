@@ -18,26 +18,36 @@
             </button>
             <input class="saveButton" alt="저장 버튼"  value="         " type="submit"> <!--base.html에 style 태그로 사진 삽입-->
         </div>
+
+        <!--투두리스트-->
         <div class="toDoList">
             <p class="checkList">
+                
                 <input type="checkbox" id="select" onclick="toggleTask(this)">
-                {% for todo in todo_list %}
                     <input type="text" placeholder="내용을 입력해주세요." id="field" value="{{ todo.todolist }}">
-                
-                    <br>{% endfor %}
-                    
-                {% comment %} <a href="{% url 'djangocreate' %}"><img src="{% static 'assets/+.svg' %}"></a>&nbsp;&nbsp;&nbsp; {% endcomment %}
-                <a href="{% url 'djangocreate' %}">내용을 입력하세요</a>&nbsp;&nbsp;&nbsp;
-                {% comment %} {% for todo in todo_list %}<br>
-                    {{ todo.todolist }}<br>
-                {% endfor %} {% endcomment %}
-                
-                
+                <a href="{% url 'djangocreate' %}" style="font-size:30px; color:#F1F1F1">내용을 입력하세요 우와아앙 해냈다ㅠㅠㅠ</a>&nbsp;&nbsp;&nbsp;
             </p>
             <button class="minusButton">
                 <img src="{% static 'assets/Group 170.svg' %}" alt="삭제 버튼" class="deleteButton">
             </button>
         </div>
+        {% for todo in todo_list %}
+        <div class="toDoList">
+            <p class="checkList">
+                <input type="checkbox" id="select" onclick="toggleTask(this)"> 
+                    <input type="text" placeholder="내용을 입력해주세요." id="field" value="{{ todo.todolist }}">
+                    <!--placeholder와 value 충돌 일어남-->
+                    <!--placeholder없으면 추가 안됨-->
+                <a href="{% url 'djangocreate' %}" style="font-size:30px; color:#F1F1F1">내용을 입력하세요</a>&nbsp;&nbsp;&nbsp;
+            </p>
+            <button class="minusButton">
+                <img src="{% static 'assets/Group 170.svg' %}" alt="삭제 버튼" class="deleteButton">
+            </button>
+        </div>
+        {% endfor %}
+
+    
+
     </section>
 
 {% endblock %}
