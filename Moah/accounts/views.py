@@ -25,13 +25,11 @@ def signup_view(request):
             if p.match(email) == False:
                 return render(request, 'Account/join.html', {'error' : 'email'})
         if password == passwordCk:
-            try: user = User.objects.create_user(
+            user = User.objects.create_user(
                 username = username,
                 email=email,
                 password=password
             )
-            except User.IntegrityError:
-                pass
             
             auth.login(request, user)
             return redirect('/')
