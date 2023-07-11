@@ -1,13 +1,73 @@
 <!--투두 작성-->
-{% comment %} {% for todo in todo_list %} {% endcomment %}
+<style>
+    .custom-form {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .custom-form p {
+        margin-bottom: 10px;
+    }
+    
+    .custom-form label {
+        display: block;
+        font-weight: bold;
+    }
+    
+    .custom-form input[type="text"],
+    .custom-form textarea,
+    .custom-form select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    
+    .custom-form input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .custom-form input[type="submit"]:hover {
+        background-color: #45a049;
+    }
 
+    .custom-button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .custom-button:hover {
+        background-color: #45a049;
+    }
+    .button-container {
+        text-align: center;
+    }
+</style>
 
 <form action="{% url 'djangocreate' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="custom-form">
+        {{ form.as_p }}
+    </div>
+    <div class="button-container">
+        <input type="submit" value="저장" class="custom-button">
+    </div>
+</form>
+
+{% comment %} <form action="{% url 'djangocreate' %}" method="POST" enctype="multipart/form-data">
     <!--보안 문제 해결-->
     {% csrf_token %}
     <table>
-        {{ form.as_table }}
+        {{ form.as_p }}
     </table>
     <input type="submit" value="저장">
-</form>
-{% comment %} {% endfor %} {% endcomment %}
+</form> {% endcomment %}
