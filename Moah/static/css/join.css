@@ -154,3 +154,14 @@ a{
     margin-left: 0.8rem;
     position: absolute;
 }
+
+.login_alert {
+    color: #FF3F3F;
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-left: 0.8rem;
+    position: absolute;
+}

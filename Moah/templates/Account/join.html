@@ -22,7 +22,14 @@
         <form class="form_wrap_line" method="POST">
             {% csrf_token %}
             <div style="margin-bottom: 1.5rem;">
-                <input type="text" name="email" class="input-form" id="id" placeholder="  이메일을 입력해주세요">
+                {% if error == 'email' or error == 'error' %}
+                <input type="text" class="input-form" id="id" placeholder="  이메일을 입력해주세요" name="email"
+                    style="border: 2px solid #FF3F3F;">
+                <div class="login_alert" id="login-alert-danger">이메일을 확인해주세요</div>
+                {% else %}
+                <input value="{% if email %}{{email}}{% endif %}" type="text" class="input-form" name="email" id="id"
+                    placeholder="  이메일을 입력해주세요">
+                {% endif %}
             </div>
             <div style="margin-bottom: 1.5rem;">
                 <label for="passwordField" class="password-label">
