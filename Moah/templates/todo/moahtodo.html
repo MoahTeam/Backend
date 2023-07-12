@@ -52,6 +52,8 @@
             <p class="checkList">
                 <input type="checkbox" id="select" onclick="toggleTask(this)">
                 <input type="text" placeholder="내용을 입력해주세요." id="field" value="{{ todo.todolist }}">
+                <!--placeholder와 value 충돌 일어남-->
+                <!--placeholder없으면 추가 안됨-->
                 <form method="POST" action="{% url 'todo:delete_button_view' %}">
                     {% csrf_token %}
                     <input type="hidden" name="button_id" value="{{ todo.id }}">
