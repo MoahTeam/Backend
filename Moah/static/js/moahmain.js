@@ -23,6 +23,14 @@ if (dateElement) {
     });
 }
 
+var formattedDate2 = year + "/" + month + "/" + day;
+var dateElement2 = document.querySelectorAll(".diaryDate");
+if (dateElement2) {
+    dateElement2.forEach(function (dateElement2) {
+        dateElement2.textContent = formattedDate2;
+    });
+} 
+
 // 할 일 체크 함수
 function toggleTask(element) {
     element.classList.toggle('checked');
