@@ -63,11 +63,3 @@
     </div>
 </form>
 
-{% comment %} <form action="{% url 'djangocreate' %}" method="POST" enctype="multipart/form-data">
-    <!--보안 문제 해결-->
-    {% csrf_token %}
-    <table>
-        {{ form.as_p }}
-    </table>
-    <input type="submit" value="저장">
-</form> {% endcomment %}
