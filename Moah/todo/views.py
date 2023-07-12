@@ -46,7 +46,7 @@ def todo_create_view(request) :
     return redirect('todo')
 
 
-# 투두작성
+# 투두리스트 작성
 def djangocreate(request):
     if request.method == 'POST':
         form = TodoForm(request.POST)
@@ -78,7 +78,6 @@ def maincreate(request):
             post.save() # model 객체
             #return redirect('moahtodo')    
             return redirect(reverse('main'))    
-            #return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
     else:
         form = TodoForm()
     return render(request, 'main.html', {'form':form})
@@ -118,53 +117,57 @@ def success_page(request):
     remaining_items = Todo.objects.all()
     return render(request, 'todo/success_page.html', {'remaining_items': remaining_items})
 
-# 투두리스트 삭제2
-def delete_button2_view(request):
-    if request.method == 'POST':
-        # POST 요청인 경우에만 처리합니다.
-        button_id2 = request.POST.get('button_id2')  # 삭제 버튼의 ID 값을 가져옵니다.
-        # 버튼을 클릭한 데이터를 데이터베이스에서 찾습니다.
-        if not button_id2:
-                    # button_id가 비어있으면 예외 처리
-                    return redirect('todo:error_page')
-        try:
-            data = Todo.objects.get(id=button_id2)  # 데이터베이스 모델과 필드를 적절히 변경해야 합니다.
-        except Todo.DoesNotExist:
-            # 해당 데이터가 없으면 적절한 예외 처리를 수행합니다.
-            return redirect('todo:error_page')  # 에러 페이지로 리디렉션하거나 다른 처리를 수행합니다.
-        # 데이터를 삭제합니다.
-        data.delete()
-        # 삭제 후 남은 항목들을 조회합니다.
-        remaining_items = Todo.objects.all()
-        # 삭제 후 리디렉션할 페이지로 이동합니다.
-        return render(request, 'todo/success_page2.html', {'remaining_items': remaining_items})  # 삭제 후 성공 페이지로 리디렉션하거나 다른 처리를 수행합니다.
-    # POST 요청이 아닌 경우에는 해당 페이지를 보여줍니다.
-    #return render(request, 'todo/moahtodo.html')  # 적절한 템플릿과 경로를 설정해야 합니다.
+def back_to_moahtodo(request):
     todo_list = Todo.objects.all()
     return render(request, 'todo/moahtodo.html', {'todo_list' : todo_list})
 
-# 투두리스트 삭제3
-def delete_button3_view(request):
-    if request.method == 'POST':
-        # POST 요청인 경우에만 처리합니다.
-        button_id = request.POST.get('button_id3')  # 삭제 버튼의 ID 값을 가져옵니다.
-        # 버튼을 클릭한 데이터를 데이터베이스에서 찾습니다.
-        if not button_id:
-                    # button_id가 비어있으면 예외 처리
-                    return redirect('todo:error_page')
-        try:
-            data = Todo.objects.get(id=button_id)  # 데이터베이스 모델과 필드를 적절히 변경해야 합니다.
-        except Todo.DoesNotExist:
-            # 해당 데이터가 없으면 적절한 예외 처리를 수행합니다.
-            return redirect('todo:error_page')  # 에러 페이지로 리디렉션하거나 다른 처리를 수행합니다.
-        # 데이터를 삭제합니다.
-        data.delete()
-        # 삭제 후 남은 항목들을 조회합니다.
-        remaining_items = Todo.objects.all()
-        # 삭제 후 리디렉션할 페이지로 이동합니다.
-        return render(request, 'todo/success_page3.html', {'remaining_items': remaining_items})  # 삭제 후 성공 페이지로 리디렉션하거나 다른 처리를 수행합니다.
-    # POST 요청이 아닌 경우에는 해당 페이지를 보여줍니다.
-    return render(request, 'todo/moahtodo.html')  # 적절한 템플릿과 경로를 설정해야 합니다.
+# # 투두리스트 삭제2
+# def delete_button2_view(request):
+#     if request.method == 'POST':
+#         # POST 요청인 경우에만 처리합니다.
+#         button_id2 = request.POST.get('button_id2')  # 삭제 버튼의 ID 값을 가져옵니다.
+#         # 버튼을 클릭한 데이터를 데이터베이스에서 찾습니다.
+#         if not button_id2:
+#                     # button_id가 비어있으면 예외 처리
+#                     return redirect('todo:error_page')
+#         try:
+#             data = Todo.objects.get(id=button_id2)  # 데이터베이스 모델과 필드를 적절히 변경해야 합니다.
+#         except Todo.DoesNotExist:
+#             # 해당 데이터가 없으면 적절한 예외 처리를 수행합니다.
+#             return redirect('todo:error_page')  # 에러 페이지로 리디렉션하거나 다른 처리를 수행합니다.
+#         # 데이터를 삭제합니다.
+#         data.delete()
+#         # 삭제 후 남은 항목들을 조회합니다.
+#         remaining_items = Todo.objects.all()
+#         # 삭제 후 리디렉션할 페이지로 이동합니다.
+#         return render(request, 'todo/success_page2.html', {'remaining_items': remaining_items})  # 삭제 후 성공 페이지로 리디렉션하거나 다른 처리를 수행합니다.
+#     # POST 요청이 아닌 경우에는 해당 페이지를 보여줍니다.
+#     #return render(request, 'todo/moahtodo.html')  # 적절한 템플릿과 경로를 설정해야 합니다.
+#     todo_list = Todo.objects.all()
+#     return render(request, 'todo/moahtodo.html', {'todo_list' : todo_list})
+
+# # 투두리스트 삭제3
+# def delete_button3_view(request):
+#     if request.method == 'POST':
+#         # POST 요청인 경우에만 처리합니다.
+#         button_id = request.POST.get('button_id3')  # 삭제 버튼의 ID 값을 가져옵니다.
+#         # 버튼을 클릭한 데이터를 데이터베이스에서 찾습니다.
+#         if not button_id:
+#                     # button_id가 비어있으면 예외 처리
+#                     return redirect('todo:error_page')
+#         try:
+#             data = Todo.objects.get(id=button_id)  # 데이터베이스 모델과 필드를 적절히 변경해야 합니다.
+#         except Todo.DoesNotExist:
+#             # 해당 데이터가 없으면 적절한 예외 처리를 수행합니다.
+#             return redirect('todo:error_page')  # 에러 페이지로 리디렉션하거나 다른 처리를 수행합니다.
+#         # 데이터를 삭제합니다.
+#         data.delete()
+#         # 삭제 후 남은 항목들을 조회합니다.
+#         remaining_items = Todo.objects.all()
+#         # 삭제 후 리디렉션할 페이지로 이동합니다.
+#         return render(request, 'todo/success_page3.html', {'remaining_items': remaining_items})  # 삭제 후 성공 페이지로 리디렉션하거나 다른 처리를 수행합니다.
+#     # POST 요청이 아닌 경우에는 해당 페이지를 보여줍니다.
+#     return render(request, 'todo/moahtodo.html')  # 적절한 템플릿과 경로를 설정해야 합니다.
 
 
 

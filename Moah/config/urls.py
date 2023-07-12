@@ -19,7 +19,7 @@ urlpatterns = [
     path('gallery/', include('gallery.urls', namespace='gallery')),
     path('gallery/',Gallery.as_view(),name='gallery'),
     
-    path('todo/',Todo.as_view(),name='todo'),
+    path('todo/', Todo.as_view(),name='todo'),
     path('todo/',include('todo.urls', namespace='todo')),
 
     path('todo/new/', todo_new_view, name='todo-new'),
