@@ -8,6 +8,8 @@ from todo.forms import TodoBaseForm, TodoForm
 
 from .models import Todo
 
+from diaries.models import DiaryImage, Diary
+
 from django.contrib.auth.decorators import login_required
 
 def index(request):
@@ -84,7 +86,10 @@ def maincreate(request):
 
 def main(request):
     todo_list = Todo.objects.all()
-    return render(request, 'main.html', {'todo_list' : todo_list})
+    img = DiaryImage.objects.latest('image')
+    diary = Diary.objects.get(created_at__month=DateFormat(datetime.now()).format('m'), created_at__day = DateFormat(datetime.now()).format('d'))
+    print(img)
+    return render(request, 'main.html', {'todo_list' : todo_list, 'image' : img, 'diary': diary, 'username': request.user.username})
 
 
 # 투두리스트 삭제1
