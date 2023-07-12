@@ -36,9 +36,9 @@
             <p class="checkList">
                 <input type="checkbox" id="select" onclick="toggleTask(this)">
                 <input type="text" placeholder="내용을 입력해주세요." id="field" value="{{ item.todolist }}">
-                <form method="POST" action="{% url 'todo:delete_button2_view' %}">
+                <form method="POST" action="{% url 'todo:delete_button3_view' %}">
                     {% csrf_token %}
-                    <input type="hidden" name="button_id2" value="{{ todo.id }}">
+                    <input type="hidden" name="button_id" value="{{ todo.id }}">
                     <button class="minusButton">
                         <img src="{% static 'assets/Group 170.svg' %}" alt="삭제 버튼" id="deleteButton" class="deleteButton">
                     </button>
@@ -52,3 +52,21 @@
     </section>
 
 {% endblock %}
+
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <title>Success</title>
+</head>
+<body>
+    <h1>Deletion Successful</h1>
+    <p>The item has been successfully deleted.</p>
+
+    <h2>Remaining Items:</h2>
+    <ul>
+        {% for item in remaining_items %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>  {% endcomment %}
