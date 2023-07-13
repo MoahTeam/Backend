@@ -31,7 +31,6 @@ plusButton.addEventListener('click',function() {
     var deleteButton = clone.querySelector(".minusButton");
     var inputField = clone.querySelector("#field");
     inputField.value = '';
-    document.getElementById(deleteButton).style.position =  "relative";
     document.getElementById(deleteButton).style.top = "0.5rem"
     // deleteButton.forEach(function(button) {
     //     button.addEventListener('click', function() {
