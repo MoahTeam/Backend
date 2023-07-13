@@ -11,8 +11,8 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        # ('django_summernote', '0003_alter_attachment_id'),
-        # migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('django_summernote', '0003_alter_attachment_id'),
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
