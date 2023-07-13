@@ -202,12 +202,7 @@
     background-color: transparent;
 }
 
-/* .toDoList form {
-    display: flex;
-    position: relative;
+.toDoList form {
+    align-items: center;
+    display: inherit;
 }
-#deleteButton {
-    position: absolute;
-    top: 0.44rem;
-    right: 0.5rem;
-} */
