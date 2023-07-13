@@ -22,6 +22,9 @@
         <form class="form_wrap_line" method="POST">
             {% csrf_token %}
             <div style="margin-bottom: 1.5rem;">
+                <div style="margin-bottom: 1.5rem;">
+                    <input type="text" class="input-form" id="name" placeholder="  이름을 입력해주세요" name="username">
+                </div>
                 {% if error == 'email' or error == 'error' %}
                 <input type="text" class="input-form" id="id" placeholder="  이메일을 입력해주세요" name="email"
                     style="border: 2px solid #FF3F3F;">
