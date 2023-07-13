@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>join-page</title>
-    <link rel="stylesheet" type="text/css" href="join.css">
+    <link rel="stylesheet" type="text/css" href=""{% static 'css/join.css' %}>
 </head>
 
 <body class="container">
     <section>
         <div class=main-logo id=main-logo-bg style="border-radius: 3.125rem;">
-            <img src="/image/main-logo-.svg">
+            <img src="{% static 'assets/main-logo-.svg' %}">
         </div>
     </section>
     <section style="text-align: center;">
@@ -35,14 +35,14 @@
                 <label for="passwordField" class="password-label">
                     <input type="password" name="password" id="passwordField" class="input-form"
                         placeholder="  비밀번호를 입력해주세요" required>
-                    <img src="/image/pwd-toggle-show.svg" class="toggle-image1" onclick="togglePasswordVisibility()">
+                    <img src="{% static 'assets/pwd-toggle-show.svg' %}" class="toggle-image1" onclick="togglePasswordVisibility()">
                 </label>
             </div>
             <div style="margin-bottom: 2rem;">
                 <label for="passwordCkField" class="password-label">
                     <input type="password" name="passwordCk" id="passwordCkField" class="input-form"
                         placeholder="  비밀번호를 다시 입력해주세요" required>
-                    <img src="/image/pwd-toggle-show.svg" class="toggle-image2"
+                    <img src="{% static 'assets/pwd-toggle-show.svg' %}" class="toggle-image2"
                         onclick="togglePasswordCheckVisibility()">
                 </label>
                 <div class="pwd_alert" id="alert-success"></div>
@@ -56,13 +56,13 @@
             <span><a href="#">비밀번호 찾기</a></span>
             <span class="line" style="width: 0.0625rem;
             height: 1.5rem; color: #CECECE;">|</span>
-            <span><a href="/Account/login/login.html">로그인</a></span>
+            <span><a href="{% url 'accounts:login' %}">로그인</a></span>
         </div>
     </section>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="/Account/account.js"></script>
-    <script src="/Account/check.js"></script>
+    <script src="{% static 'js/account.js' %}"></script>
+    <script src="{% static 'js/check.js' %}"></script>
 </body>
 
 </html>
