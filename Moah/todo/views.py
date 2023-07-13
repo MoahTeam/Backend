@@ -93,13 +93,13 @@ def main(request):
         print(request.user)
         try:
             todo_list = Todo.objects.all()
-            img = DiaryImage.objects.filter(writer = request.user).latest('created_at')
+            img = DiaryImage.objects.filter(writer = request.user).last()
             # diary = Diary.objects.get(created_at__month=DateFormat(datetime.now()).format('m'), created_at__day = DateFormat(datetime.now()).format('d'))
-            diary = Diary.objects.filter(writer = request.user).latest('created_at')
+            diary = Diary.objects.filter(writer = request.user).last()
         except Diary.DoesNotExist:
-            return render(request, 'main.html', {'todo_list' : todo_list, 'username': request.user.username})
+            return render(request, 'main.html', {'todo_list' : todo_list, 'image' : img, 'username': request.user.username})
         except DiaryImage.DoesNotExist:
-            return render(request, 'main.html', {'todo_list' : todo_list, 'username': request.user.username})
+            return render(request, 'main.html', {'todo_list' : todo_list, 'diary': diary, 'username': request.user.username})
         except Todo.DoesNotExist:
             return render(request, 'main.html', {'image' : img, 'diary': diary,'username': request.user.username})
         print(img)
