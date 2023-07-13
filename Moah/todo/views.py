@@ -6,6 +6,7 @@ from django.utils.dateformat import DateFormat
 from config.views import Diary
 from diaries.models import DiaryImage, Diary
 from todo.forms import TodoBaseForm, TodoForm
+from django.contrib.auth.models import AnonymousUser
 
 from .models import Todo
 
@@ -88,19 +89,23 @@ def main(request):
     return render(request, 'main.html', {'todo_list' : todo_list})
 
 def main(request):
-    try:
-        todo_list = Todo.objects.filter(writer = request.user).all()
-        img = DiaryImage.objects.filter(writer = request.user).latest('created_at')
-        # diary = Diary.objects.get(created_at__month=DateFormat(datetime.now()).format('m'), created_at__day = DateFormat(datetime.now()).format('d'))
-        diary = Diary.objects.filter(writer = request.user).latest('created_at')
-    except Diary.DoesNotExist:
-        return render(request, 'main.html', {'todo_list' : todo_list, 'image' : img, 'username': request.user.username})
-    except DiaryImage.DoesNotExist:
-        return render(request, 'main.html', {'todo_list' : todo_list, 'diary': diary,'username': request.user.username})
-    except Todo.DoesNotExist:
-        return render(request, 'main.html', {'image' : img, 'diary': diary,'username': request.user.username})
-    print(img)
-    return render(request, 'main.html', {'todo_list' : todo_list, 'image' : img, 'diary': diary, 'username': request.user.username})
+    if(request.user.is_authenticated):
+        print(request.user)
+        try:
+            todo_list = Todo.objects.all()
+            img = DiaryImage.objects.filter(writer = request.user).latest('created_at')
+            # diary = Diary.objects.get(created_at__month=DateFormat(datetime.now()).format('m'), created_at__day = DateFormat(datetime.now()).format('d'))
+            diary = Diary.objects.filter(writer = request.user).latest('created_at')
+        except Diary.DoesNotExist:
+            return render(request, 'main.html', {'todo_list' : todo_list, 'username': request.user.username})
+        except DiaryImage.DoesNotExist:
+            return render(request, 'main.html', {'todo_list' : todo_list, 'username': request.user.username})
+        except Todo.DoesNotExist:
+            return render(request, 'main.html', {'image' : img, 'diary': diary,'username': request.user.username})
+        print(img)
+        return render(request, 'main.html', {'todo_list' : todo_list, 'image' : img, 'diary': diary, 'username': request.user.username})
+    else:
+        return render(request, 'main.html')
 
 # 투두리스트 삭제1
 def delete_button_view(request):
