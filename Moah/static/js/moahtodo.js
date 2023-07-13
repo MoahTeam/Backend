@@ -36,8 +36,7 @@ plusButton.addEventListener('click',function() {
     //         button.closest(".toDoList").remove();
     //     });
     // });
-    var cloneItem = clone;
-    cloneItem.style.positon = "relative";
+    clone.style.position = "relative";
     deleteButton.style.postion = "absolute";
     deleteButton.style.right = "0.5rem";
     deleteButton.style.top = "0.44rem";
