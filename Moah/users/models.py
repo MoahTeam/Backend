@@ -29,7 +29,7 @@ class UserManager(DjangoUserManager):
         return self._create_user(username, email, password, **extra_fields)
 
 class User(AbstractUser):
-    username = models.CharField(max_length=30)
+    username = models.CharField(max_length=30, unique= False)
     email = models.EmailField(verbose_name = "email", max_length = 255, unique = True)
     objects = UserManager()
     USERNAME_FIELD='email'

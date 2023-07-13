@@ -32,7 +32,7 @@ def signup_view(request):
             )
             
             auth.login(request, user)
-            return redirect('/')
+            return redirect('main')
         else:
             return render(request, 'Account/join.html', {'error' : 'password'})
     else:
