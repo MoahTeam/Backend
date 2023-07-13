@@ -46,7 +46,7 @@ plusButton.addEventListener('click',function() {
     });
     clone.querySelector(".checkList").appendChild(deleteButton);
     clone.style.position = "relative"; /* 추가: 새로 생성된 항목에 상대적인 위치 설정 */
-    clone.style.marginTop = "1.06rem";
+    clone.style.marginTop = "0.5rem";
     document.body.appendChild(clone);
 });
 
