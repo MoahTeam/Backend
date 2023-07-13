@@ -44,7 +44,9 @@ plusButton.addEventListener('click',function() {
         var listItem = deleteButton.closest(".toDoList");
         listItem.remove();
     });
-    clone.querySelector(".checkList").appendChild(deleteButton); /* 변경: 버튼을 checkList 내부에 추가 */
+    clone.querySelector(".checkList").appendChild(deleteButton);
+    clone.style.position = "relative"; /* 추가: 새로 생성된 항목에 상대적인 위치 설정 */
+    clone.style.marginTop = "1.06rem";
     document.body.appendChild(clone);
 });
 
