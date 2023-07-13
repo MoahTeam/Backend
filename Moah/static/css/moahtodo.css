@@ -189,9 +189,8 @@
 
 .toDoList .minusButton {
     position: absolute;
-    top: 50%;
+    top: 0.44rem;
     right: 0.5em;
-    transform: translateY(-50%);
     width: 2.75rem;
     height: 2.75rem;
     flex-shrink: 0;

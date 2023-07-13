@@ -45,9 +45,9 @@ plusButton.addEventListener('click',function() {
         var listItem = deleteButton.closest(".toDoList");
         listItem.remove();
     });
-    // var clonedForm = clone.querySelector("form");
-    // clonedForm.style.display = "inherit";
-    // clonedForm.style.alignItems = "center";
+    var clonedForm = clone.querySelector("form");
+    clonedForm.style.display = "inherit";
+    clonedForm.style.alignItems = "center";
     // clonedForm.style.margin = "auto";
     document.body.appendChild(clone);
 });
