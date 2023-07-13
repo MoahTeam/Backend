@@ -8,7 +8,7 @@
       <p class="date">today</p>
       <img src="{% static 'assets/unsplash_W12Uk0spCOA.png' %}" alt="이미지를 불러올 수 없음" class="profileImg">
       <br>
-      <p class="profileName">이름</p> <!-- 이름 가져오기-->
+      <p class="profileName">이름{{username}}</p> <!-- 이름 가져오기-->
       <div class="container">
         <div class="box">
           <img src="{% static 'assets/Vector (Stroke).svg' %}" alt="체크리스트" class="Done">
@@ -62,14 +62,17 @@
         </ul>
       </div>
       <div class="ImgBox">
-        <img src="{% static 'assets/KakaoTalk_20200404_223717501_11 2.png' %}" alt="사진">
+        {% comment %} <img src="{% static 'assets/KakaoTalk_20200404_223717501_11 2.png' %}" alt="사진"> {% endcomment %}
+        {% if image %}
+        <img src="{{image.image.url}}" alt="사진">
+        {% endif %}
       </div>
       <div class="ToDoBox">
         <p class="date">today</p>
-        <p class="daySchedule">오늘 일정</p>
+        {% comment %} <p class="daySchedule">오늘 일정</p> {% endcomment %}
+        <p class="daySchedule">{{diary.title}}</p>
       </div>
     </div>
-
     <!-- 메인페이지에서 간이 To do -->
     <div class="TodoBox" id="TodoBoxId">
       <div class="toDoTaskList">

@@ -3,7 +3,8 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from datetime import datetime
 from django.utils.dateformat import DateFormat
-
+from config.views import Diary
+from diaries.models import DiaryImage, Diary
 from todo.forms import TodoBaseForm, TodoForm
 
 from .models import Todo
@@ -86,6 +87,12 @@ def main(request):
     todo_list = Todo.objects.all()
     return render(request, 'main.html', {'todo_list' : todo_list})
 
+def main(request):
+    todo_list = Todo.objects.all()
+    img = DiaryImage.objects.latest('image')
+    diary = Diary.objects.get(created_at__month=DateFormat(datetime.now()).format('m'), created_at__day = DateFormat(datetime.now()).format('d'))
+    print(img)
+    return render(request, 'main.html', {'todo_list' : todo_list, 'image' : img, 'diary': diary, 'username': request.user.username})
 
 # 투두리스트 삭제1
 def delete_button_view(request):
