@@ -39,7 +39,8 @@ plusButton.addEventListener('click',function() {
     var cloneItem = clone;
     cloneItem.style.positon = "relative";
     deleteButton.style.postion = "absolute";
-    deleteButton.style.right = "0.44rem";
+    deleteButton.style.right = "0.5rem";
+    deleteButton.style.top = "0.44rem";
     deleteButton.addEventListener("click", function() {
         var listItem = deleteButton.closest(".toDoList");
         listItem.remove();
