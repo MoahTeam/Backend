@@ -202,6 +202,9 @@
     background-color: transparent;
 }
 
+.toDoList form {
+    display: inline-block;
+}
 .toDoList.clone .checkList form {
     background-color: yellow;
 }
