@@ -203,8 +203,11 @@
 }
 
 .toDoList form {
-    display: inline-block;
+    display: flex;
+    position: relative;
 }
-.toDoList.clone .checkList form {
-    background-color: yellow;
+#deleteButton {
+    position: absolute;
+    top: 0.44rem;
+    right: 0.5rem;
 }
