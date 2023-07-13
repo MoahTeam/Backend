@@ -29,16 +29,17 @@
     <!-- 선택된 날짜 나오는 부분 -->
     <div id="selected-date">2023.{{month}}.{{day}}</div>
 </div>
+{% for image in image_array %}
 <div class="images=containers" style="display: flex; align-items: center; justify-content: center;">
     <!-- 선택된 날짜의 사진 요소 나오는 부분 -->
-    <div class="image-containers" id="image-container" style="display: flex; align-items: center; justify-content: center; margin-bottom: 5rem;">
-        {% for image in image_array %}
+    <div class="image-containers" id="image-container"
+        style="display: flex; align-items: center; justify-content: center; margin-bottom: 5rem;">
         <img src="{{image.image.url}}" style="border-radius: 0.625rem; width: 25rem;
         height: 28rem;">
         <br>
-        {% endfor %}
     </div>
 </div>
+{% endfor %}
 
 <script>
     // 2023년 7월의 달력 객체 생성 함수
