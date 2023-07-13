@@ -1,156 +1,156 @@
-{% extends 'base.html'  %}
+{% extends 'base.html' %}
 {% load static %}
 {% block content %}
 
-  <!-- 프로필 -->
-  <section>
-    <div class="profile">
+<!-- 프로필 -->
+<section>
+  <div class="profile">
+    <p class="date">today</p>
+    <img src="{% static 'assets/unsplash_W12Uk0spCOA.png' %}" alt="이미지를 불러올 수 없음" class="profileImg">
+    <br>
+    <p class="profileName">{% if username %}이름{{username}}{% endif %}</p> <!-- 이름 가져오기-->
+    <div class="container">
+      <div class="box">
+        <img src="{% static 'assets/Vector (Stroke).svg' %}" alt="체크리스트" class="Done">
+        <p class="number">1</p>
+      </div>
+      <div class="box">
+        <img src="{% static 'assets/Group 53.svg' %}" alt="이벤트" class="Event">
+        <br>
+        <p class="number">2</p>
+      </div>
+      <div class="box">
+        <img src="{% static 'assets/Group 52.svg' %}" alt="방문자" class="Today">
+        <br>
+        <p class="number">3</p>
+      </div>
+    </div>
+    <div class="todayMenu">
+      <p class="menuDone">Done</p>
+      <p class="menuEvent">Event</p>
+      <p class="menuToday">Today</p>
+    </div>
+    <div class="visitor">
+      <p class="visitorManage"> 방명록 관리</p>
+    </div>
+  </div>
+
+  <!-- 일정 체크 -->
+  <div class="littleMenu" id="littleMenuBoxId">
+    <button class="All" onclick="toggleAllBox()"><a href="#">All</a></button>
+    <button class="ToDo" onclick="toggleTodoBox()">To do</button>
+    <button class="Diary" onclick="toggleDiaryBox()">Diary</button>
+    <button class="Event">Event</button>
+  </div>
+  <div class="littleMenuBox" id="AllBoxId">
+    <div class="AllBox">
+      <ul class="taskList">
+        {% for todo in todo_list %}
+        <li onclick="toggleTask(this)">
+          <input type="checkbox">
+          <span value="TASK">{{ todo.todolist }}</span>
+        </li>
+        {% endfor %}
+        {% comment %}
+        <li onclick="toggleTask(this)">
+          <input type="checkbox">
+          <span>Task 2</span>
+        </li>
+        <li onclick="toggleTask(this)">
+          <input type="checkbox">
+          <span>Task 3</span> {% endcomment %}
+      </ul>
+    </div>
+    <div class="ImgBox">
+      {% comment %} <img src="{% static 'assets/KakaoTalk_20200404_223717501_11 2.png' %}" alt="사진"> {% endcomment %}
+      {% if image %}
+      <img src="{{image.image.url}}" alt="사진">
+      {% endif %}
+    </div>
+    <div class="ToDoBox">
       <p class="date">today</p>
-      <img src="{% static 'assets/unsplash_W12Uk0spCOA.png' %}" alt="이미지를 불러올 수 없음" class="profileImg">
-      <br>
-      <p class="profileName">이름{{username}}</p> <!-- 이름 가져오기-->
-      <div class="container">
-        <div class="box">
-          <img src="{% static 'assets/Vector (Stroke).svg' %}" alt="체크리스트" class="Done">
-          <p class="number">1</p>
-        </div>
-        <div class="box">
-          <img src="{% static 'assets/Group 53.svg' %}" alt="이벤트" class="Event">
-          <br>
-          <p class="number">2</p>
-        </div>
-        <div class="box">
-          <img src="{% static 'assets/Group 52.svg' %}" alt="방문자" class="Today">
-          <br>
-          <p class="number">3</p>
-        </div>
-      </div>
-      <div class="todayMenu">
-        <p class="menuDone">Done</p>
-        <p class="menuEvent">Event</p>
-        <p class="menuToday">Today</p>
-      </div>
-      <div class="visitor">
-        <p class="visitorManage"> 방명록 관리</p>
-      </div>
+      {% comment %} <p class="daySchedule">오늘 일정</p> {% endcomment %}
+      <p class="daySchedule">{{diary.title}}</p>
     </div>
+  </div>
+  <!-- 메인페이지에서 간이 To do -->
+  <div class="TodoBox" id="TodoBoxId">
+    <div class="toDoTaskList">
+      <ul class="taskList">
+        {% for todo in todo_list %}
+        <li onclick="toggleTask(this)">
+          <input type="checkbox" id="Todocheckbox">
+          <span>{{ todo.todolist }}</span>
+        </li>
+        {% endfor %}
+        {% comment %} <li onclick="toggleTask(this)">
+          <input type="checkbox">
+          <span>Task </span>
+        </li>
+        <li onclick="toggleTask(this)">
+          <input type="checkbox">
+          <span>Task 1</span>
+        </li>
+        <li onclick="toggleTask(this)">
+          <input type="checkbox">
+          <span>Task 1</span>
+        </li>
+        <li onclick="toggleTask(this)">
+          <input type="checkbox">
+          <span>Task 1</span>
+        </li>
+        <li onclick="toggleTask(this)">
+          <input type="checkbox">
+          <span>Task 1</span>
+        </li>
+        <li onclick="toggleTask(this)">
+          <input type="checkbox">
+          <span>Task 1</span>
+        </li>
+        <li onclick="toggleTask(this)">
+          <input type="checkbox">
+          <span>Task 1</span>
+        </li>
+        <li onclick="toggleTask(this)">
+          <input type="checkbox">
+          <span>Task 1</span>
+        </li> {% endcomment %}
+      </ul>
+    </div>
+  </div>
 
-    <!-- 일정 체크 -->
-    <div class="littleMenu" id="littleMenuBoxId">
-      <button class="All" onclick="toggleAllBox()"><a href="#">All</a></button>
-      <button class="ToDo" onclick="toggleTodoBox()">To do</button>
-      <button class="Diary" onclick="toggleDiaryBox()">Diary</button>
-      <button class="Event">Event</button>
-    </div>
-    <div class="littleMenuBox" id="AllBoxId">
-      <div class="AllBox">
-        <ul class="taskList">
-          {% for todo in todo_list %}
-          <li onclick="toggleTask(this)">
-            <input type="checkbox">
-            <span value="TASK">{{ todo.todolist }}</span>
-          </li>
-          {% endfor %}
-          {% comment %}           
-          <li onclick="toggleTask(this)">
-            <input type="checkbox">
-            <span>Task 2</span>
-          </li>
-          <li onclick="toggleTask(this)">
-            <input type="checkbox">
-            <span>Task 3</span> {% endcomment %}
-        </ul>
-      </div>
-      <div class="ImgBox">
-        {% comment %} <img src="{% static 'assets/KakaoTalk_20200404_223717501_11 2.png' %}" alt="사진"> {% endcomment %}
-        {% if image %}
-        <img src="{{image.image.url}}" alt="사진">
-        {% endif %}
-      </div>
-      <div class="ToDoBox">
-        <p class="date">today</p>
-        {% comment %} <p class="daySchedule">오늘 일정</p> {% endcomment %}
-        <p class="daySchedule">{{diary.title}}</p>
-      </div>
-    </div>
-    <!-- 메인페이지에서 간이 To do -->
-    <div class="TodoBox" id="TodoBoxId">
-      <div class="toDoTaskList">
-        <ul class="taskList">
-          {% for todo in todo_list %}
-          <li onclick="toggleTask(this)">
-            <input type="checkbox" id="Todocheckbox">  
-            <span>{{ todo.todolist }}</span>
-          </li>
-          {% endfor %}
-          {% comment %} <li onclick="toggleTask(this)">
-            <input type="checkbox">
-            <span>Task </span>
-          </li>
-          <li onclick="toggleTask(this)">
-            <input type="checkbox">
-            <span>Task 1</span>
-          </li>
-          <li onclick="toggleTask(this)">
-            <input type="checkbox">
-            <span>Task 1</span>
-          </li>
-          <li onclick="toggleTask(this)">
-            <input type="checkbox">
-            <span>Task 1</span>
-          </li>
-          <li onclick="toggleTask(this)">
-            <input type="checkbox">
-            <span>Task 1</span>
-          </li>
-          <li onclick="toggleTask(this)">
-            <input type="checkbox">
-            <span>Task 1</span>
-          </li>
-          <li onclick="toggleTask(this)">
-            <input type="checkbox">
-            <span>Task 1</span>
-          </li>
-          <li onclick="toggleTask(this)">
-            <input type="checkbox">
-            <span>Task 1</span>
-          </li> {% endcomment %}
-        </ul>
-      </div>
-    </div>
+  <!-- 메인페이지에서 간이 Diary -->
+  <div class="DiaryBox" id="DiaryBoxId">
+    <p class="date">날짜</p>
+    <p class="diaryContent">내용</p>
+    <img src="{% static 'assets/Vector.svg' %}" alt="공개 or 비공개" class="diarySecret">
+  </div>
 
-    <!-- 메인페이지에서 간이 Diary -->
-    <div class="DiaryBox" id="DiaryBoxId">
-      <p class="date">날짜</p>
-      <p class="diaryContent">내용</p>
-      <img src="{% static 'assets/Vector.svg' %}" alt="공개 or 비공개" class="diarySecret">
+  <!-- 친구 목록 -->
+  <div class="addFriend">
+    <p class="user">User</p>
+    <button class="addFriendButton">
+      <img src="{% static 'assets/Group 39.svg' %}" alt="플러스 버튼">
+    </button>
+  </div>
+  <div class="friends">
+    <hr class="topLine">
+    <button class="leftButton">
+      <img src="{% static 'assets/Polygon 12.svg' %}" alt="왼쪽 이동 버튼">
+    </button>
+    <div class="anotherUser">
+      <img src="{% static 'assets/Group 100.svg' %}" alt="친구 사진">
+      <img src="{% static 'assets/Group 100.svg' %}" alt="친구 사진">
+      <img src="{% static 'assets/Group 100.svg' %}" alt="친구 사진">
+      <img src="{% static 'assets/Group 100.svg' %}" alt="친구 사진">
+      <img src="{% static 'assets/Group 100.svg' %}" alt="친구 사진">
+      <img src="{% static 'assets/Group 100.svg' %}" alt="친구 사진">
+      <img src="{% static 'assets/Group 100.svg' %}" alt="친구 사진">
     </div>
-
-    <!-- 친구 목록 -->
-    <div class="addFriend">
-      <p class="user">User</p>
-      <button class="addFriendButton">
-        <img src="{% static 'assets/Group 39.svg' %}" alt="플러스 버튼">
-      </button>
-    </div>
-    <div class="friends">
-      <hr class="topLine">
-      <button class="leftButton">
-        <img src="{% static 'assets/Polygon 12.svg' %}" alt="왼쪽 이동 버튼">
-      </button>
-      <div class="anotherUser">
-        <img src="{% static 'assets/Group 100.svg' %}" alt="친구 사진">
-        <img src="{% static 'assets/Group 100.svg' %}" alt="친구 사진">
-        <img src="{% static 'assets/Group 100.svg' %}" alt="친구 사진">
-        <img src="{% static 'assets/Group 100.svg' %}" alt="친구 사진">
-        <img src="{% static 'assets/Group 100.svg' %}" alt="친구 사진">
-        <img src="{% static 'assets/Group 100.svg' %}" alt="친구 사진">
-        <img src="{% static 'assets/Group 100.svg' %}" alt="친구 사진">
-      </div>
-      <button class="rightButton">
-        <img src="{% static 'assets/Polygon 11.svg' %}" alt="오른쪽 이동 버튼">
-      </button>
-      <hr class="bottomLine">
-    </div>
-  </section>
+    <button class="rightButton">
+      <img src="{% static 'assets/Polygon 11.svg' %}" alt="오른쪽 이동 버튼">
+    </button>
+    <hr class="bottomLine">
+  </div>
+</section>
 {% endblock %}
