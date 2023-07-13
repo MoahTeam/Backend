@@ -89,8 +89,9 @@ def main(request):
 
 def main(request):
     todo_list = Todo.objects.all()
-    img = DiaryImage.objects.latest('image')
-    diary = Diary.objects.get(created_at__month=DateFormat(datetime.now()).format('m'), created_at__day = DateFormat(datetime.now()).format('d'))
+    img = DiaryImage.objects.latest('created_at')
+    # diary = Diary.objects.get(created_at__month=DateFormat(datetime.now()).format('m'), created_at__day = DateFormat(datetime.now()).format('d'))
+    diary = Diary.objects.latest('created_at')
     print(img)
     return render(request, 'main.html', {'todo_list' : todo_list, 'image' : img, 'diary': diary, 'username': request.user.username})
 
