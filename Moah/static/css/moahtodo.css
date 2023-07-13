@@ -204,5 +204,6 @@
 
 .toDoList form {
     align-items: center;
-    display: inherit;
+    display: inline-flex;
+    margin: auto;
 }
