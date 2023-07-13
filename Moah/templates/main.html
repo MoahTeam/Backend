@@ -70,7 +70,7 @@
     <div class="ToDoBox">
       <p class="date">today</p>
       {% comment %} <p class="daySchedule">오늘 일정</p> {% endcomment %}
-      <p class="daySchedule">{{diary.title}}</p>
+      <p class="daySchedule">{% if diary %}{{diary.title}}{% endif %}</p>
     </div>
   </div>
   <!-- 메인페이지에서 간이 To do -->
