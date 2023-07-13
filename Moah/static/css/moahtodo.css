@@ -201,3 +201,7 @@
     align-items: center;
     background-color: transparent;
 }
+
+.toDoList.clone .checkList form {
+    background-color: yellow;
+}
