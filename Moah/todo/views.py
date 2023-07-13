@@ -84,12 +84,12 @@ def maincreate(request):
         form = TodoForm()
     return render(request, 'main.html', {'form':form})
 
-def main(request):
-    todo_list = Todo.objects.all()
-    img = DiaryImage.objects.latest('image')
-    diary = Diary.objects.get(created_at__month=DateFormat(datetime.now()).format('m'), created_at__day = DateFormat(datetime.now()).format('d'))
-    print(img)
-    return render(request, 'main.html', {'todo_list' : todo_list, 'image' : img, 'diary': diary, 'username': request.user.username})
+# def main(request):
+#     todo_list = Todo.objects.all()
+#     img = DiaryImage.objects.latest('image')
+#     diary = Diary.objects.get(created_at__month=DateFormat(datetime.now()).format('m'), created_at__day = DateFormat(datetime.now()).format('d'))
+#     print(img)
+#     return render(request, 'main.html', {'todo_list' : todo_list, 'image' : img, 'diary': diary, 'username': request.user.username})
 
 
 # 투두리스트 삭제1
