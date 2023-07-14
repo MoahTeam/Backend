@@ -5,9 +5,38 @@
             <img src="{% static 'assets/delete-img.png' %}" style="width: 5rem; height: 5rem;">
         </div>
         <br>
-        <div style="text-align: center;">To Do 게시글<br> 삭제가 완료되었습니다.</div>
+        <div class="delete">To Do 게시글<br> 삭제가 완료되었습니다.</div>
         <br>
-        <div style="text-align: center;"><a href="{% url 'todo:back_to_moahtodo'%}">돌아가기</a></div>
+        <div class="back">
+            <a href="{% url 'todo:back_to_moahtodo'%}" class="backtomoahtodo">돌아가기</a>
+        </div>
+        
     </div>
 </div>
+<style>
 
+    .back {
+        width:10rem;
+        height: 2rem;
+        flex-shrink: 0;
+        border-radius: 20px;
+        background: var(--5, #CECECE);
+        position: absolute;
+        {% comment %} top: 28.69rem;
+        left: 10.56rem; {% endcomment %}
+        text-align: center;
+        position:center;
+        cursor: pointer;
+    }
+
+    .backtomoahtodo {
+        text-align: center;
+        position:center;
+        color: #FFF;
+        font-size: 1.3rem;
+        font-family: Pretendard;
+        margin-top: 0.62rem;
+        
+        
+    }
+</style>
