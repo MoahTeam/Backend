@@ -24,6 +24,15 @@
   </div>
 </section>
 
+<style>
+  .custom-button[disabled] img {
+    content: url("{% static 'assets/Diary-saveBtn.svg' %}");
+  }
+  .custom-button img {
+    content: url("{% static 'assets/Diary-saveBtn-hover.svg' %}");
+  }
+</style>
+
 <form method="POST">
   {% csrf_token %}
   <div class="button-container">

@@ -259,14 +259,7 @@ hr {
     cursor: default;
 }
 
-.custom-button[disabled] img {
-    content: url("/image/Diary-saveBtn.svg"); 
-}
-
 .custom-button {
     cursor: pointer;
 }
 
-.custom-button img {
-    content: url("/image/Diary-saveBtn-hover.svg");
-}
