@@ -1,2 +1,13 @@
-<h1>삭제되었습니다.</h1>
-<a href="{% url 'todo:back_to_moahtodo'%}">돌아가기</a></span>
+{% load static %}
+<div style="display: flex; justify-content: center; align-items: center; margin-top:10rem; ">
+    <div>
+        <div style="display: flex; justify-content: center;">
+            <img src="{% static 'assets/delete-img.png' %}" style="width: 5rem; height: 5rem;">
+        </div>
+        <br>
+        <div style="text-align: center;">To Do 게시글<br> 삭제가 완료되었습니다.</div>
+        <br>
+        <div style="text-align: center;"><a href="{% url 'todo:back_to_moahtodo'%}">돌아가기</a></div>
+    </div>
+</div>
+
